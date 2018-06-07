@@ -49,9 +49,18 @@ const Index = (
         </Stack>
 
         <Stack
+          key="outfits"
+          title="Pocket Closet"
+          icon={() => <Icon name="shirt" {...DefaultProps.icons} />}
+          {...DefaultProps.navbarProps}
+        >
+          <Scene key="home" component={AboutComponent} />
+        </Stack>
+
+        <Stack
           key="recipes"
           title="CLOSET"
-          icon={() => <Icon name="shirt" {...DefaultProps.icons} />}
+          icon={() => <Icon name="square" {...DefaultProps.icons} />}
           {...DefaultProps.navbarProps}
         >
           <Scene key="recipes" component={RecipesContainer} Layout={RecipesComponent} />

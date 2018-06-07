@@ -1,22 +1,64 @@
 import React from 'react'
-import { Container, Content, Text, H1, H2, H3, Button, Form, Picker, Item, Input } from 'native-base'
+import { Container, Content, Text, H1, H2, H3, Button, Form, Picker, Item, Input, Card, CardItem, Left, Right, Body, Thumbnail, Image, Icon } from 'native-base'
 import Spacer from './Spacer'
 
 class About extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      selected: undefined
+      selected: undefined,
+      barcode: '',
+      searched: false
     }
   }
 
-  onValueChange (value) {
+  onValueChange =  (value) => {
     this.setState({
       selected: value
     })
   }
 
+  onTextChange = (e) => {
+    this.setState({
+      barcode: e
+    })
+  }
+
   render () {
+    var showImage;
+    if (this.state.searched)
+      showImage = (<Card>
+        <CardItem>
+          <Left>
+            <Body>
+            <Text>NativeBase</Text>
+            <Text note>GeekyAnts</Text>
+            </Body>
+          </Left>
+        </CardItem>
+        <CardItem cardBody>
+          <Image source={{uri: './news.jpeg'}} style={{height: 200, width: null, flex: 1}}/>
+        </CardItem>
+        <CardItem>
+          <Left>
+            <Button transparent>
+              <Icon active name="thumbs-up" />
+              <Text>12 Likes</Text>
+            </Button>
+          </Left>
+          <Body>
+          <Button transparent>
+            <Icon active name="chatbubbles" />
+            <Text>4 Comments</Text>
+          </Button>
+          </Body>
+          <Right>
+            <Text>11h ago</Text>
+          </Right>
+        </CardItem>
+      </Card>);
+    else
+      showImage = null;
     return (
       <Container>
         <Content padder>
@@ -35,7 +77,7 @@ class About extends React.Component {
               note={false}
               style={{width: undefined}}
               selectedValue={this.state.selected}
-              onValueChange={this.onValueChange.bind(this)}
+              onValueChange={this.onValueChange}
             >
               <Picker.Item label="H&M" value="key0"/>
               <Picker.Item label="Express" value="key1"/>
@@ -44,15 +86,16 @@ class About extends React.Component {
               <Picker.Item label="Macys" value="key4"/>
             </Picker>
             <Item rounded>
-              <Input placeholder='Enter the Barcode #'/>
+              <Input placeholder='Enter the Barcode #' value={this.state.barcode} onChangeText={(e) => this.onTextChange(e)}/>
             </Item>
           </Form>
           <Spacer size={10}/>
-          <Button>
+          <Button onPress={() => this.setState({ searched: !this.state.searched })}>
             <Text>
               Search
             </Text>
           </Button>
+          {showImage}
         </Content>
       </Container>
     )
