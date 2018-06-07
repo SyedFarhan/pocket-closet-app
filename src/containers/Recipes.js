@@ -24,12 +24,12 @@ class RecipeListing extends Component {
     match: null,
   }
 
-  componentDidMount = () => this.fetchRecipes();
+  componentDidMount = () => this.fetchGarments();
 
   /**
     * Fetch Data from API, saving to Redux
     */
-  fetchRecipes = (async () => {
+  fetchGarments = (async () => {
     try {
       await this.props.getRecipes();
       return await this.props.getMeals();
@@ -54,7 +54,7 @@ class RecipeListing extends Component {
         error={recipes.error}
         loading={recipes.loading}
         recipes={recipes.recipes}
-        reFetch={() => this.fetchRecipes()}
+        reFetch={() => this.fetchGarments()}
       />
     );
   }

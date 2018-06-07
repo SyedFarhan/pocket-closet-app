@@ -6,7 +6,7 @@ import ErrorMessages from '../../constants/errors';
 import Error from './Error';
 import Spacer from './Spacer';
 
-const RecipeView = ({
+const GarmentView = ({
   error,
   recipes,
   recipeId,
@@ -14,37 +14,37 @@ const RecipeView = ({
   // Error
   if (error) return <Error content={error} />;
 
-  // Get this Recipe from all recipes
-  let recipe = null;
+  // Get this Garment from all garments
+  let garment = null;
   if (recipeId && recipes) {
-    recipe = recipes.find(item => parseInt(item.id, 10) === parseInt(recipeId, 10));
+    garment = recipes.find(item => parseInt(item.id, 10) === parseInt(recipeId, 10));
   }
 
-  // Recipe not found
-  if (!recipe) return <Error content={ErrorMessages.recipe404} />;
+  // Garment not found
+  if (!garment) return <Error content={ErrorMessages.recipe404} />;
 
-  // Build Ingredients listing
-  const ingredients = recipe.ingredients.map(item => (
+  // Build Ingredients listingx
+  const ingredients = garment.ingredients.map(item => (
     <ListItem key={item} rightIcon={{ style: { opacity: 0 } }}>
       <Text>{item}</Text>
     </ListItem>
   ));
 
   // Build Method listing
-  const method = recipe.method.map(item => (
+  const method = garment.method.map(item => (
     <ListItem key={item} rightIcon={{ style: { opacity: 0 } }}>
-      <Text>{item}</Text>
+      <Text>{item}</Text>t
     </ListItem>
   ));
 
   return (
     <Container>
       <Content padder>
-        <Image source={{ uri: recipe.image }} style={{ height: 250, width: 250, flex: 1 }} />
+        <Image source={{ uri: garment.image }} style={{ height: 250, width: 250, flex: 1 }} />
 
         <Spacer size={25} />
-        <H3>{recipe.title}</H3>
-        <Text>from {recipe.author}</Text>
+        <H3>{garment.title}</H3>
+        <Text>from H&M</Text>
         <Spacer size={15} />
 
         <Card>
@@ -53,7 +53,7 @@ const RecipeView = ({
           </CardItem>
           <CardItem>
             <Body>
-              <Text>{recipe.body}</Text>
+              <Text>{garment.body}</Text>
             </Body>
           </CardItem>
         </Card>
@@ -88,14 +88,14 @@ const RecipeView = ({
   );
 };
 
-RecipeView.propTypes = {
+GarmentView.propTypes = {
   error: PropTypes.string,
   recipeId: PropTypes.string.isRequired,
   recipes: PropTypes.arrayOf(PropTypes.shape()).isRequired,
 };
 
-RecipeView.defaultProps = {
+GarmentView.defaultProps = {
   error: null,
 };
 
-export default RecipeView;
+export default GarmentView;

@@ -6,8 +6,8 @@ import DefaultProps from '../constants/navigation';
 import AppConfig from '../../constants/config';
 
 import RecipesContainer from '../../containers/Recipes';
-import RecipesComponent from '../components/Recipes';
-import RecipeViewComponent from '../components/Recipe';
+import GarmentsComponent from '../components/Garments';
+import GarmentViewComponent from '../components/Garment';
 
 import SignUpContainer from '../../containers/SignUp';
 import SignUpComponent from '../components/SignUp';
@@ -63,7 +63,7 @@ const Index = (
           icon={() => <Icon name="square" {...DefaultProps.icons} />}
           {...DefaultProps.navbarProps}
         >
-          <Scene key="recipes" component={RecipesContainer} Layout={RecipesComponent} />
+          <Scene key="recipes" component={RecipesContainer} Layout={GarmentsComponent} />
         </Stack>
 
         <Stack
@@ -120,11 +120,11 @@ const Index = (
     <Scene
       back
       clone
-      key="recipe"
-      title="RECIPE"
+      key="garment"
+      title="GARMENT"
       {...DefaultProps.navbarProps}
       component={RecipesContainer}
-      Layout={RecipeViewComponent}
+      Layout={GarmentViewComponent}
     />
   </Stack>
 );

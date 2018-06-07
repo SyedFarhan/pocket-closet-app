@@ -8,7 +8,7 @@ import Error from './Error';
 import Header from './Header';
 import Spacer from './Spacer';
 
-const RecipeListing = ({
+const GarmentListing = ({
   error,
   loading,
   recipes,
@@ -22,7 +22,7 @@ const RecipeListing = ({
 
   const keyExtractor = item => item.id;
 
-  const onPress = item => Actions.recipe({ match: { params: { id: String(item.id) } } });
+  const onPress = item => Actions.garment({ match: { params: { id: String(item.id) } } });
 
   return (
     <Container>
@@ -83,16 +83,16 @@ const RecipeListing = ({
   );
 };
 
-RecipeListing.propTypes = {
+GarmentListing.propTypes = {
   error: PropTypes.string,
   loading: PropTypes.bool.isRequired,
   recipes: PropTypes.arrayOf(PropTypes.shape()).isRequired,
   reFetch: PropTypes.func,
 };
 
-RecipeListing.defaultProps = {
+GarmentListing.defaultProps = {
   error: null,
   reFetch: null,
 };
 
-export default RecipeListing;
+export default GarmentListing;
