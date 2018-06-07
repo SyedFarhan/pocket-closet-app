@@ -16,7 +16,7 @@ export default {
   passwordsDontMatch: 'Passwords do not match',
 
   // Recipes
-  recipe404: 'Recipe not found',
+  garment404: 'Garment not found',
   missingMealId: 'Missing meal definition',
 
   // Locale

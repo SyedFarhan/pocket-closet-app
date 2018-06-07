@@ -11,7 +11,7 @@ import Spacer from './Spacer';
 const GarmentListing = ({
   error,
   loading,
-  recipes,
+  garments,
   reFetch,
 }) => {
   // Loading
@@ -34,7 +34,7 @@ const GarmentListing = ({
 
         <FlatList
           numColumns={2}
-          data={recipes}
+          data={garments}
           renderItem={({ item }) => (
             <Card transparent style={{ paddingHorizontal: 6 }}>
               <CardItem cardBody>
@@ -86,7 +86,7 @@ const GarmentListing = ({
 GarmentListing.propTypes = {
   error: PropTypes.string,
   loading: PropTypes.bool.isRequired,
-  recipes: PropTypes.arrayOf(PropTypes.shape()).isRequired,
+  garments: PropTypes.arrayOf(PropTypes.shape()).isRequired,
   reFetch: PropTypes.func,
 };
 

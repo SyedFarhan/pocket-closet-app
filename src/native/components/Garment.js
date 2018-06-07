@@ -8,20 +8,20 @@ import Spacer from './Spacer';
 
 const GarmentView = ({
   error,
-  recipes,
-  recipeId,
+  garments,
+  garmentId,
 }) => {
   // Error
   if (error) return <Error content={error} />;
 
   // Get this Garment from all garments
   let garment = null;
-  if (recipeId && recipes) {
-    garment = recipes.find(item => parseInt(item.id, 10) === parseInt(recipeId, 10));
+  if (garmentId && garments) {
+    garment = garments.find(item => parseInt(item.id, 10) === parseInt(garmentId, 10));
   }
 
   // Garment not found
-  if (!garment) return <Error content={ErrorMessages.recipe404} />;
+  if (!garment) return <Error content={ErrorMessages.garment404} />;
 
   // Build Ingredients listingx
   const ingredients = garment.ingredients.map(item => (
@@ -90,8 +90,8 @@ const GarmentView = ({
 
 GarmentView.propTypes = {
   error: PropTypes.string,
-  recipeId: PropTypes.string.isRequired,
-  recipes: PropTypes.arrayOf(PropTypes.shape()).isRequired,
+  garmentId: PropTypes.string.isRequired,
+  garments: PropTypes.arrayOf(PropTypes.shape()).isRequired,
 };
 
 GarmentView.defaultProps = {

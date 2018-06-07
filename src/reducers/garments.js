@@ -1,4 +1,4 @@
-import Store from '../store/recipes';
+import Store from '../store/garments';
 
 export const initialState = Store;
 
@@ -25,11 +25,11 @@ export default function recipeReducer(state = initialState, action) {
       };
     }
     case 'RECIPES_REPLACE': {
-      let recipes = [];
+      let garments = [];
 
       // Pick out the props I need
       if (action.data && typeof action.data === 'object') {
-        recipes = action.data.map(item => ({
+        garments = action.data.map(item => ({
           id: item.id,
           title: item.title,
           body: item.body,
@@ -45,7 +45,7 @@ export default function recipeReducer(state = initialState, action) {
         ...state,
         error: null,
         loading: false,
-        recipes,
+        garments,
       };
     }
     default:

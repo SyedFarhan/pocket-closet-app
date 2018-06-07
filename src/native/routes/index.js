@@ -5,7 +5,7 @@ import { Icon } from 'native-base';
 import DefaultProps from '../constants/navigation';
 import AppConfig from '../../constants/config';
 
-import RecipesContainer from '../../containers/Recipes';
+import GarmentsContainer from '../../containers/Garments';
 import GarmentsComponent from '../components/Garments';
 import GarmentViewComponent from '../components/Garment';
 
@@ -58,12 +58,12 @@ const Index = (
         </Stack>
 
         <Stack
-          key="recipes"
+          key="garments"
           title="CLOSET"
           icon={() => <Icon name="square" {...DefaultProps.icons} />}
           {...DefaultProps.navbarProps}
         >
-          <Scene key="recipes" component={RecipesContainer} Layout={GarmentsComponent} />
+          <Scene key="garments" component={GarmentsContainer} Layout={GarmentsComponent} />
         </Stack>
 
         <Stack
@@ -123,7 +123,7 @@ const Index = (
       key="garment"
       title="GARMENT"
       {...DefaultProps.navbarProps}
-      component={RecipesContainer}
+      component={GarmentsContainer}
       Layout={GarmentViewComponent}
     />
   </Stack>

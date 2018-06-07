@@ -72,9 +72,9 @@ export function setError(message) {
 }
 
 /**
-  * Get Recipes
+  * Get Garments
   */
-export function getRecipes() {
+export function getGarments() {
   if (Firebase === null) return () => new Promise(resolve => resolve());
 
   return dispatch => new Promise(resolve => FirebaseRef.child('recipes')

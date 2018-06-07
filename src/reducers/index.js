@@ -1,6 +1,6 @@
 import status from './status';
 import member from './member';
-import recipes from './recipes';
+import garments from './garments';
 import locale from './locale';
 
 const rehydrated = (state = false, action) => {
@@ -16,6 +16,6 @@ export default {
   rehydrated,
   status,
   member,
-  recipes,
+  garments,
   locale,
 };

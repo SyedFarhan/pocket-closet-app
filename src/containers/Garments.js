@@ -2,20 +2,20 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import { getRecipes, getMeals, setError } from '../actions/recipes';
+import { getGarments, getMeals, setError } from '../actions/recipes';
 
-class RecipeListing extends Component {
+class GarmentListing extends Component {
   static propTypes = {
     Layout: PropTypes.func.isRequired,
-    recipes: PropTypes.shape({
+    garments: PropTypes.shape({
       loading: PropTypes.bool.isRequired,
       error: PropTypes.string,
-      recipes: PropTypes.arrayOf(PropTypes.shape()).isRequired,
+      garments: PropTypes.arrayOf(PropTypes.shape()).isRequired,
     }).isRequired,
     match: PropTypes.shape({
       params: PropTypes.shape({}),
     }),
-    getRecipes: PropTypes.func.isRequired,
+    getGarments: PropTypes.func.isRequired,
     getMeals: PropTypes.func.isRequired,
     setError: PropTypes.func.isRequired,
   }
@@ -31,29 +31,23 @@ class RecipeListing extends Component {
     */
   fetchGarments = (async () => {
     try {
-      await this.props.getRecipes();
+      await this.props.getGarments();
       return await this.props.getMeals();
     } catch (e) {
       return this.props.setError(e);
     }
-    // return this.props.getRecipes()
-    //   .then(() => this.props.getMeals())
-    //   .catch((err) => {
-    //     console.log(`Error: ${err}`);
-    //     return this.props.setError(err);
-    //   });
   })
 
   render = () => {
-    const { Layout, recipes, match } = this.props;
+    const { Layout, garments, match } = this.props;
     const id = (match && match.params && match.params.id) ? match.params.id : null;
 
     return (
       <Layout
-        recipeId={id}
-        error={recipes.error}
-        loading={recipes.loading}
-        recipes={recipes.recipes}
+        garmentId={id}
+        error={garments.error}
+        loading={garments.loading}
+        garments={garments.garments}
         reFetch={() => this.fetchGarments()}
       />
     );
@@ -61,13 +55,13 @@ class RecipeListing extends Component {
 }
 
 const mapStateToProps = state => ({
-  recipes: state.recipes || {},
+  garments: state.garments || {},
 });
 
 const mapDispatchToProps = {
-  getRecipes,
+  getGarments,
   getMeals,
   setError,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(RecipeListing);
+export default connect(mapStateToProps, mapDispatchToProps)(GarmentListing);
