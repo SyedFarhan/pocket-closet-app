@@ -18,18 +18,23 @@ const GarmentListing = ({ error, loading, garments }) => {
   if (error) return <Error content={error} />;
 
   // Build Cards for Listing
-  const cards = garments.map(item => (
-    <Card key={`${item.id}`}>
-      <Link to={`/garment/${item.id}`}>
-        <CardImg top src={item.image} alt={item.title} />
-      </Link>
-      <CardBody>
-        <CardTitle>{item.title}</CardTitle>
-        <CardText>{item.body}</CardText>
-        <Link className="btn btn-primary" to={`/garment/${item.id}`}>View Garment <i className="icon-arrow-right" /></Link>
-      </CardBody>
-    </Card>
-  ));
+  const cards = garments.map((item) => {
+    if (item.id) {
+      return (
+        <Card key={`${item.id}`}>
+          <Link to={`/garment/${item.id}`}>
+            <CardImg top src={item.image} alt={item.title} />
+          </Link>
+          <CardBody>
+            <CardTitle>{item.title}</CardTitle>
+            <CardText>{item.body}</CardText>
+            <Link className="btn btn-primary" to={`/garment/${item.id}`}>View Garment <i className="icon-arrow-right" /></Link>
+          </CardBody>
+        </Card>
+      );
+    }
+    return null;
+  });
 
   // Show Listing
   return (

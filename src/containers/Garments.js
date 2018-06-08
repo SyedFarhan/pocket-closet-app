@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { getGarments, getMeals, setError } from '../actions/garments';
+import { deleteGarment, getGarments, getMeals, setError } from '../actions/garments';
 
 class GarmentListing extends Component {
   static propTypes = {
@@ -15,6 +16,7 @@ class GarmentListing extends Component {
     match: PropTypes.shape({
       params: PropTypes.shape({}),
     }),
+    deleteGarment: PropTypes.func.isRequired,
     getGarments: PropTypes.func.isRequired,
     getMeals: PropTypes.func.isRequired,
     setError: PropTypes.func.isRequired,
@@ -52,6 +54,7 @@ class GarmentListing extends Component {
         loading={garments.loading}
         garments={garments.garments}
         reFetch={() => this.fetchGarments()}
+        deleteGarment={this.props.deleteGarment}
       />
     );
   }
@@ -61,10 +64,21 @@ const mapStateToProps = state => ({
   garments: state.garments || {},
 });
 
+/*
 const mapDispatchToProps = {
+  deleteGarment,
   getGarments,
   getMeals,
   setError,
 };
+*/
+
+const mapDispatchToProps = dispatch => bindActionCreators({
+  deleteGarment,
+  getGarments,
+  getMeals,
+  setError,
+}, dispatch);
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(GarmentListing);

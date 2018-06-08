@@ -7,12 +7,15 @@ import Loading from './Loading';
 import Error from './Error';
 import Header from './Header';
 import Spacer from './Spacer';
+import { Firebase, FirebaseRef } from '../../lib/firebase';
+
 
 const GarmentListing = ({
   error,
   loading,
   garments,
   reFetch,
+  deleteGarment,
 }) => {
   // Loading
   if (loading) return <Loading />;
@@ -59,7 +62,9 @@ const GarmentListing = ({
                     block
                     bordered
                     small
-                    onPress={() => onPress(item)}
+                    onPress={async () => {
+                      await deleteGarment(item.id);
+                    }}
                   >
                     <Text>View Details</Text>
                   </Button>

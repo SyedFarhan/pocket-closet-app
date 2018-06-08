@@ -80,10 +80,17 @@ export function getGarments() {
   return dispatch => new Promise(resolve => FirebaseRef.child('garments')
     .on('value', (snapshot) => {
       const garments = snapshot.val() || {};
-
       return resolve(dispatch({
         type: 'GARMENTS_REPLACE',
         data: garments,
       }));
     })).catch(e => console.log(e));
+}
+
+
+export function deleteGarment(itemId) {
+  console.log('delete garmnet action ', itemId);
+  if (Firebase === null) return () => new Promise(resolve => resolve());
+
+  return dispatch => new Promise(resolve => resolve(dispatch({ type: 'GARMENTS_DELETE', data: itemId })));
 }
