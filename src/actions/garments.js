@@ -32,7 +32,7 @@ export function resetFavourites(dispatch) {
 }
 
 /**
-  * Update My Favourites Recipes
+  * Update My Favourites Garment
   */
 export function replaceFavourites(newFavourites) {
   if (Firebase === null) return () => new Promise(resolve => resolve());
@@ -66,7 +66,7 @@ export function getMeals() {
   */
 export function setError(message) {
   return dispatch => new Promise(resolve => resolve(dispatch({
-    type: 'RECIPES_ERROR',
+    type: 'GARMENTS_ERROR',
     data: message,
   })));
 }
@@ -77,13 +77,13 @@ export function setError(message) {
 export function getGarments() {
   if (Firebase === null) return () => new Promise(resolve => resolve());
 
-  return dispatch => new Promise(resolve => FirebaseRef.child('recipes')
+  return dispatch => new Promise(resolve => FirebaseRef.child('garments')
     .on('value', (snapshot) => {
-      const recipes = snapshot.val() || {};
+      const garments = snapshot.val() || {};
 
       return resolve(dispatch({
-        type: 'RECIPES_REPLACE',
-        data: recipes,
+        type: 'GARMENTS_REPLACE',
+        data: garments,
       }));
     })).catch(e => console.log(e));
 }

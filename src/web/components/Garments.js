@@ -14,6 +14,7 @@ import Error from './Error';
 
 const GarmentListing = ({ error, loading, garments }) => {
   // Error
+  console.log(garments);
   if (error) return <Error content={error} />;
 
   // Build Cards for Listing

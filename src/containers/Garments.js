@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import { getGarments, getMeals, setError } from '../actions/recipes';
+import { getGarments, getMeals, setError } from '../actions/garments';
 
 class GarmentListing extends Component {
   static propTypes = {
@@ -24,19 +24,22 @@ class GarmentListing extends Component {
     match: null,
   }
 
-  componentDidMount = () => this.fetchGarments();
+  componentDidMount = () => {
+    this.fetchGarments();
+  };
 
   /**
     * Fetch Data from API, saving to Redux
     */
-  fetchGarments = (async () => {
-    try {
-      await this.props.getGarments();
-      return await this.props.getMeals();
-    } catch (e) {
-      return this.props.setError(e);
-    }
-  })
+  fetchGarments = () => {
+    console.log('fetching');
+    return this.props.getGarments()
+      .then(() => this.props.getMeals())
+      .catch((err) => {
+        console.log(`Error: ${err}`);
+        return this.props.setError(err);
+      });
+  }
 
   render = () => {
     const { Layout, garments, match } = this.props;

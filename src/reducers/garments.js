@@ -2,7 +2,7 @@ import Store from '../store/garments';
 
 export const initialState = Store;
 
-export default function recipeReducer(state = initialState, action) {
+export default function garmentReducer(state = initialState, action) {
   switch (action.type) {
     case 'FAVOURITES_REPLACE': {
       return {
@@ -18,13 +18,13 @@ export default function recipeReducer(state = initialState, action) {
         meals: action.data,
       };
     }
-    case 'RECIPES_ERROR': {
+    case 'GARMENTS_ERROR': {
       return {
         ...state,
         error: action.data,
       };
     }
-    case 'RECIPES_REPLACE': {
+    case 'GARMENTS_REPLACE': {
       let garments = [];
 
       // Pick out the props I need
