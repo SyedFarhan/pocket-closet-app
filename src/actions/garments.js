@@ -100,13 +100,16 @@ export function addGarment(garment) {
 
     try {
       await Firebase.database().ref(`garments/${garment.id}`).set({
-        author: garment.author,
-        body: garment.body,
-        category: garment.category,
-        id: garment.id,
-        image: garment.image,
         slug: garment.slug,
         title: garment.title,
+        brand: garment.brand,
+        size: garment.size,
+        description: garment.description,
+        category: garment.category,
+        id: garment.id,
+        imageUrl: garment.imageUrl,
+        laundryInstructions: {},
+        tags: [],
       });
       return onSuccess(garment);
     } catch (e) {

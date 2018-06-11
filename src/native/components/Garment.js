@@ -99,3 +99,4 @@ GarmentView.defaultProps = {
 };
 
 export default GarmentView;
+

@@ -3,6 +3,22 @@ import { View, Image } from 'react-native';
 import PropTypes from 'prop-types';
 import { Container, Content, Text, H1, Button, Form, Picker, Item, Input, Card, CardItem, Left, Right, Body, Icon } from 'native-base';
 import Spacer from './Spacer';
+import StyledCard from './StyledCard';
+
+
+// MOCK DATA
+var mockGarment = {
+  slug: '1mx-shirt',
+  title: '1MX Shirt',
+  brand: 'Express',
+  size: 'Large',
+  description: 'Classic Express Fitted Dress Shirt',
+  category: 'Dress Shirt',
+  id: '40',
+  imageUrl: 'https://images.express.com/is/image/expressfashion/0020_00302144_0098?cache=on&wid=361&fmt=jpeg&qlt=75,1&resmode=sharp2&op_usm=1,1,5,0&defaultImage=Photo-Coming-Soon',
+  laundryInstructions: {},
+  tags: [],
+}
 
 class GarmentSearch extends React.Component {
   static propTypes = {
@@ -40,49 +56,11 @@ class GarmentSearch extends React.Component {
     let showImage;
     if (this.state.searched)
       showImage = (
-        <Card>
-          <CardItem>
-            <Left>
-              <Body>
-              <Text>NativeBase</Text>
-              <Text note>GeekyAnts</Text>
-              </Body>
-            </Left>
-          </CardItem>
-          <CardItem cardBody>
-            <Image source={{ uri: 'https://facebook.github.io/react-native/docs/assets/favicon.png' }} style={{ height: 200, width: 200, flex: 1 }} />
-          </CardItem>
-          <CardItem>
-            <Left>
-              <Button transparent>
-                <Icon active name="star" />
-                <Text>H&M</Text>
-              </Button>
-            </Left>
-            <Body>
-            <Button transparent onPress={() => {
-              console.log('yo');
-              console.log(this.props.addGarment);
-              this.props.addGarment({
-                author: 'Express',
-                body: 'Bla',
-                category: 2,
-                id: 20,
-                image: 'https://facebook.github.io/react-native/docs/assets/favicon.png',
-                slug: 'hello',
-                title: 'hello',
-              });
-            }}
-            >
-              <Icon active name="add" />
-              <Text>Add to Closet</Text>
-            </Button>
-            </Body>
-            <Right>
-              <Text>1</Text>
-            </Right>
-          </CardItem>
-        </Card>);
+        <StyledCard
+          addGarment={this.props.addGarment}
+          garment={mockGarment}
+        />
+      );
     else
       showImage = <View></View>;
     return (
