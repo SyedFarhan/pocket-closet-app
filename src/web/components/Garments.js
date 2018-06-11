@@ -8,7 +8,7 @@ import {
   CardText,
   CardBody,
   CardTitle,
-  Button
+  Button,
 } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import Error from './Error';
@@ -29,7 +29,7 @@ const GarmentListing = ({ error, loading, garments, deleteGarment }) => {
           <CardBody>
             <CardTitle>{item.title}</CardTitle>
             <CardText>{item.body}</CardText>
-            <Button className="btn btn-primary" onClick={() => deleteGarment(item.id)}>Delete Garment <i className="icon-arrow-right" /></Button>
+            <Button className="btn btn-primary" onClick={() => deleteGarment(item.id)}>Delete Garment</Button>
           </CardBody>
         </Card>
       );
@@ -59,6 +59,7 @@ GarmentListing.propTypes = {
   error: PropTypes.string,
   loading: PropTypes.bool.isRequired,
   garments: PropTypes.arrayOf(PropTypes.shape()).isRequired,
+  deleteGarment: PropTypes.func.isRequired,
 };
 
 GarmentListing.defaultProps = {
