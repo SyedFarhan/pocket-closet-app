@@ -3,6 +3,7 @@ import { View, Image } from 'react-native';
 import PropTypes from 'prop-types';
 import { Container, Content, Text, H1, Button, Form, Picker, Item, Input, Card, CardItem, Left, Right, Body, Icon } from 'native-base';
 import Spacer from './Spacer';
+import Error from './Error';
 import StyledCard from './StyledCard';
 
 
@@ -62,7 +63,7 @@ class GarmentSearch extends React.Component {
         />
       );
     else
-      showImage = <View></View>;
+      showImage = <Error />;
     return (
       <Container>
         <Content padder>
