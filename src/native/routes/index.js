@@ -28,7 +28,7 @@ import MemberContainer from '../../containers/Member';
 import ProfileComponent from '../components/Profile';
 
 import GarmentSearchContainer from '../../containers/GarmentSearch';
-import AboutComponent from '../components/About';
+import GarmentSearchComponent from '../components/GarmentSearch';
 
 const Index = (
   <Stack>
@@ -46,7 +46,7 @@ const Index = (
           icon={() => <Icon name="search" {...DefaultProps.icons} />}
           {...DefaultProps.navbarProps}
         >
-          <Scene key="home" component={GarmentSearchContainer} Layout={AboutComponent} />
+          <Scene key="home" component={GarmentSearchContainer} Layout={GarmentSearchComponent} />
         </Stack>
 
         <Stack
@@ -55,7 +55,7 @@ const Index = (
           icon={() => <Icon name="shirt" {...DefaultProps.icons} />}
           {...DefaultProps.navbarProps}
         >
-          <Scene key="home" component={AboutComponent} />
+          <Scene key="home" component={GarmentSearchComponent} />
         </Stack>
 
         <Stack
