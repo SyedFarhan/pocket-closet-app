@@ -86,6 +86,35 @@ export function setError(message) {
       }));
     })).catch(e => console.log(e));
 } */
+export function addGarment(garment) {
+  return async (dispatch) => {
+    function onSuccess(savedGarment) {
+      dispatch({ type: 'GARMENT_ADD', data: savedGarment });
+      return garment;
+    }
+
+    function onError(error) {
+      dispatch({ type: 'ERROR_GENERATED', error });
+      return error;
+    }
+
+    try {
+      await Firebase.database().ref(`garments/${garment.id}`).set({
+        author: garment.author,
+        body: garment.body,
+        category: garment.category,
+        id: garment.id,
+        image: garment.image,
+        slug: garment.slug,
+        title: garment.title,
+      });
+      return onSuccess(garment);
+    } catch (e) {
+      console.log(e);
+      return onError(e);
+    }
+  };
+}
 
 
 export function deleteGarment(itemId) {

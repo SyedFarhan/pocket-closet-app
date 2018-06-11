@@ -7,7 +7,6 @@ import Loading from './Loading';
 import Error from './Error';
 import Header from './Header';
 import Spacer from './Spacer';
-import { Firebase, FirebaseRef } from '../../lib/firebase';
 
 
 const GarmentListing = ({

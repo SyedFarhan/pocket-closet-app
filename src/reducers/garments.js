@@ -47,6 +47,20 @@ export default function garmentReducer(state = initialState, action) {
         garments,
       };
     }
+    case 'GARMENT_ADD': {
+      let garments = [];
+      console.log('garments replace');
+      // Pick out the props I need
+      if (action.data && typeof action.data === 'object') {
+        garments = [...state.garments, action.data];
+      }
+      return {
+        ...state,
+        error: null,
+        loading: false,
+        garments,
+      };
+    }
     case 'GARMENTS_DELETE': {
       console.log('garment remove reducer');
       const garments = state.garments.filter(garment => garment.id !== action.data);

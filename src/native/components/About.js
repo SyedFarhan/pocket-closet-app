@@ -1,11 +1,22 @@
 import React from 'react';
 import { View, Image } from 'react-native';
+import PropTypes from 'prop-types';
 import { Container, Content, Text, H1, Button, Form, Picker, Item, Input, Card, CardItem, Left, Right, Body, Icon } from 'native-base';
 import Spacer from './Spacer';
 
 class About extends React.Component {
+  static propTypes = {
+    Layout: PropTypes.func,
+    deleteGarment: PropTypes.func,
+    getGarments: PropTypes.func,
+    getMeals: PropTypes.func,
+    setError: PropTypes.func,
+    addGarment: PropTypes.func,
+  }
+
   constructor(props) {
     super(props);
+    console.log(this.props);
     this.state = {
       selected: undefined,
       barcode: '',
@@ -49,9 +60,22 @@ class About extends React.Component {
               </Button>
             </Left>
             <Body>
-            <Button transparent>
+            <Button transparent onPress={() => {
+              console.log('yo');
+              console.log(this.props.addGarment);
+              this.props.addGarment({
+                author: 'Express',
+                body: 'Bla',
+                category: 2,
+                id: 20,
+                image: 'https://facebook.github.io/react-native/docs/assets/favicon.png',
+                slug: 'hello',
+                title: 'hello',
+              });
+            }}
+            >
               <Icon active name="add" />
-              <Text onPress={() => this.setState({ searched: false })}>Add to Closet</Text>
+              <Text>Add to Closet</Text>
             </Button>
             </Body>
             <Right>

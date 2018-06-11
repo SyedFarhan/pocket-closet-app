@@ -27,6 +27,7 @@ import UpdateProfileComponent from '../components/UpdateProfile';
 import MemberContainer from '../../containers/Member';
 import ProfileComponent from '../components/Profile';
 
+import GarmentSearchContainer from '../../containers/GarmentSearch';
 import AboutComponent from '../components/About';
 
 const Index = (
@@ -45,7 +46,7 @@ const Index = (
           icon={() => <Icon name="search" {...DefaultProps.icons} />}
           {...DefaultProps.navbarProps}
         >
-          <Scene key="home" component={AboutComponent} />
+          <Scene key="home" component={GarmentSearchContainer} Layout={AboutComponent} />
         </Stack>
 
         <Stack
