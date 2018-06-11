@@ -74,7 +74,7 @@ export function setError(message) {
 /**
   * Get Garments
   */
-export function getGarments() {
+/* export function getGarments() {
   if (Firebase === null) return () => new Promise(resolve => resolve());
 
   return dispatch => new Promise(resolve => FirebaseRef.child('garments')
@@ -85,12 +85,48 @@ export function getGarments() {
         data: garments,
       }));
     })).catch(e => console.log(e));
-}
+} */
 
 
 export function deleteGarment(itemId) {
   console.log('delete garmnet action ', itemId);
   if (Firebase === null) return () => new Promise(resolve => resolve());
+  Firebase.database().ref(`/garments/${itemId}`).remove();
 
   return dispatch => new Promise(resolve => resolve(dispatch({ type: 'GARMENTS_DELETE', data: itemId })));
+}
+
+export function getGarments() {
+  return async (dispatch) => {
+    function onSuccess(garments) {
+      dispatch({ type: 'GARMENTS_REPLACE', data: garments });
+      return garments;
+    }
+
+    function onError(error) {
+      dispatch({ type: 'ERROR_GENERATED', error });
+      return error;
+    }
+
+    try {
+      const garments = [];
+
+      // get garments reference
+      const garmentsReference = await FirebaseRef.child('garments');
+
+      const dataSnapshot = await garmentsReference.once('value');
+      dataSnapshot.forEach((garmentRef) => {
+        const garment = garmentRef.val();
+        // If garment isn't falsey, and if id isn't falsey or not 0 then push into garments array
+        if (garment && (garment.id || garment.id === 0)) {
+          garments.push(garment);
+        }
+      });
+      console.log(garments);
+      return onSuccess(garments);
+    } catch (error) {
+      console.log(error);
+      return onError(error);
+    }
+  };
 }
