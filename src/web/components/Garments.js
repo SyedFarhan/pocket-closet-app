@@ -8,11 +8,12 @@ import {
   CardText,
   CardBody,
   CardTitle,
+  Button
 } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import Error from './Error';
 
-const GarmentListing = ({ error, loading, garments }) => {
+const GarmentListing = ({ error, loading, garments, deleteGarment }) => {
   // Error
   console.log(garments);
   if (error) return <Error content={error} />;
@@ -28,7 +29,7 @@ const GarmentListing = ({ error, loading, garments }) => {
           <CardBody>
             <CardTitle>{item.title}</CardTitle>
             <CardText>{item.body}</CardText>
-            <Link className="btn btn-primary" to={`/garment/${item.id}`}>View Garment <i className="icon-arrow-right" /></Link>
+            <Button className="btn btn-primary" onClick={() => deleteGarment(item.id)}>Delete Garment <i className="icon-arrow-right" /></Button>
           </CardBody>
         </Card>
       );
