@@ -5,6 +5,9 @@ import { Icon } from 'native-base';
 import DefaultProps from '../constants/navigation';
 import AppConfig from '../../constants/config';
 
+import OutfitMakerContainer from '../../containers/OutfitMaker';
+import OutfitMakerComponent from '../components/OutfitMaker';
+
 import GarmentsContainer from '../../containers/Garments';
 import GarmentsComponent from '../components/Garments';
 import GarmentViewComponent from '../components/Garment';
@@ -41,21 +44,21 @@ const Index = (
         {...DefaultProps.tabProps}
       >
         <Stack
-          key="home"
+          key="search"
           title="Pocket Closet"
           icon={() => <Icon name="search" {...DefaultProps.icons} />}
           {...DefaultProps.navbarProps}
         >
-          <Scene key="home" component={GarmentSearchContainer} Layout={GarmentSearchComponent} />
+          <Scene key="search" component={GarmentSearchContainer} Layout={GarmentSearchComponent} />
         </Stack>
 
         <Stack
-          key="outfits"
+          key="outfit"
           title="Pocket Closet"
           icon={() => <Icon name="shirt" {...DefaultProps.icons} />}
           {...DefaultProps.navbarProps}
         >
-          <Scene key="home" component={GarmentSearchComponent} />
+          <Scene key="outfit" component={OutfitMakerContainer} Layout={OutfitMakerComponent} />
         </Stack>
 
         <Stack

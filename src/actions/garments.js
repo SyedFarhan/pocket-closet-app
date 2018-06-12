@@ -125,7 +125,7 @@ export function deleteGarment(itemId) {
   if (Firebase === null) return () => new Promise(resolve => resolve());
   Firebase.database().ref(`/garments/${itemId}`).remove();
 
-  return dispatch => new Promise(resolve => resolve(dispatch({ type: 'GARMENTS_DELETE', data: itemId })));
+  return dispatch => new Promise(resolve => resolve(dispatch({ type: 'GARMENT_DELETE', data: itemId })));
 }
 
 export function getGarments() {

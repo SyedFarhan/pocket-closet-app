@@ -42,7 +42,7 @@ const GarmentListing = ({
               <CardItem cardBody>
                 <TouchableOpacity onPress={() => onPress(item)} style={{ flex: 1 }}>
                   <Image
-                    source={{ uri: item.image }}
+                    source={{ uri: item.imageUrl }}
                     style={{
                       height: 175,
                       width: 160,

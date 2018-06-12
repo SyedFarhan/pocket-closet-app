@@ -32,12 +32,11 @@ export default function garmentReducer(state = initialState, action) {
         garments = action.data.map(item => ({
           id: item.id,
           title: item.title,
-          body: item.body,
+          brand: item.brand,
           category: item.category,
-          image: item.image,
-          author: item.author,
-          ingredients: item.ingredients,
-          method: item.method,
+          imageUrl: item.imageUrl,
+          size: item.size,
+          description: item.description,
         }));
       }
       return {
@@ -61,7 +60,7 @@ export default function garmentReducer(state = initialState, action) {
         garments,
       };
     }
-    case 'GARMENTS_DELETE': {
+    case 'GARMENT_DELETE': {
       console.log('garment remove reducer');
       const garments = state.garments.filter(garment => garment.id !== action.data);
       return {

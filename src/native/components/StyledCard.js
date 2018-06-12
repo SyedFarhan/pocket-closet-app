@@ -1,7 +1,6 @@
 import React from 'react';
 import { Image } from 'react-native';
 import { Text, Button, Card, CardItem, Left, Right, Body, Icon } from 'native-base';
-import GarmentView from './Garment'
 
 
 // Todo: Refactor to decouple from GarmentSearch and make it a more generic reusable component,
@@ -46,11 +45,13 @@ const StyledCard = ({ garment, addGarment }) => {
   );
 };
 
+/*
 StyledCard.propTypes = {
 };
 
 StyledCard.defaultProps = {
 
 };
+*/
 
 export default StyledCard;

@@ -22,38 +22,24 @@ const GarmentView = ({
 
   // Garment not found
   if (!garment) return <Error content={ErrorMessages.garment404} />;
-
-  // Build Ingredients listingx
-  const ingredients = garment.ingredients.map(item => (
-    <ListItem key={item} rightIcon={{ style: { opacity: 0 } }}>
-      <Text>{item}</Text>
-    </ListItem>
-  ));
-
-  // Build Method listing
-  const method = garment.method.map(item => (
-    <ListItem key={item} rightIcon={{ style: { opacity: 0 } }}>
-      <Text>{item}</Text>t
-    </ListItem>
-  ));
-
+  console.log('Garment: ', garment);
   return (
     <Container>
       <Content padder>
-        <Image source={{ uri: garment.image }} style={{ height: 250, width: 250, flex: 1 }} />
+        <Image source={{ uri: garment.imageUrl }} style={{ height: 250, width: 250, flex: 1 }} />
 
         <Spacer size={25} />
         <H3>{garment.title}</H3>
-        <Text>from H&M</Text>
+        <Text>{garment.brand}</Text>
         <Spacer size={15} />
 
         <Card>
           <CardItem header bordered>
-            <Text>Item descriptions</Text>
+            <Text>Description</Text>
           </CardItem>
           <CardItem>
             <Body>
-              <Text>{garment.body}</Text>
+              <Text>{garment.description}</Text>
             </Body>
           </CardItem>
         </Card>
@@ -65,7 +51,6 @@ const GarmentView = ({
           <CardItem>
             <Content>
               <List>
-                {ingredients}
               </List>
             </Content>
           </CardItem>
@@ -77,7 +62,6 @@ const GarmentView = ({
           </CardItem>
           <CardItem>
             <List>
-              {method}
             </List>
           </CardItem>
         </Card>
