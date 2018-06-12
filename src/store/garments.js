@@ -13,5 +13,9 @@ export default {
       tags: ['----'],
     },
   ],
+  pants: {
+    byId: {},
+    allIds: [],
+  },
   favourites: [],
 };

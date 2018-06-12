@@ -54,7 +54,7 @@ const Index = (
 
         <Stack
           key="outfit"
-          title="Pocket Closet"
+          title="Create an Outfit"
           icon={() => <Icon name="shirt" {...DefaultProps.icons} />}
           {...DefaultProps.navbarProps}
         >

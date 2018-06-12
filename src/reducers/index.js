@@ -2,6 +2,7 @@ import status from './status';
 import member from './member';
 import garments from './garments';
 import locale from './locale';
+import shirts from './shirts';
 
 const rehydrated = (state = false, action) => {
   switch (action.type) {
@@ -18,4 +19,5 @@ export default {
   member,
   garments,
   locale,
+  shirts
 };

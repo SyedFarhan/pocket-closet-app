@@ -162,3 +162,82 @@ export function getGarments() {
     }
   };
 }
+
+
+/*export function getShirts() {
+  return async (dispatch) => {
+    function onSuccess(shirts) {
+      dispatch({ type: 'GET_ALL_SHIRTS', data: shirts });
+      return shirts;
+    }
+
+    function onError(error) {
+      dispatch({ type: 'ERROR_GENERATED', error });
+      return error;
+    }
+
+    try {
+      let shirts = {};
+
+      // get shirts reference
+      const shirtsReference = await FirebaseRef.child('shirts');
+
+      const dataSnapshot = await shirtsReference.once('value');
+      shirts = dataSnapshot.val();
+      console.log('shirts: ', shirts.byId);
+      return onSuccess(null);
+    } catch (error) {
+      console.log(error);
+      return onError(error);
+    }
+  };
+}*/
+
+// TODO: dynamically handle null allId fields
+// TODO: general cleanup
+export function getShirts() {
+  return async (dispatch) => {
+    function onSuccess(shirts) {
+      dispatch({ type: 'GET_ALL_SHIRTS', data: shirts });
+      return shirts;
+    }
+
+    function onError(error) {
+      dispatch({ type: 'ERROR_GENERATED', error });
+      return error;
+    }
+
+    try {
+      let shirts = { byId: {} };
+
+      // get shirts reference
+      const shirtsByIdReference = await FirebaseRef.child('shirts/byId');
+
+      const dataSnapshot = await shirtsByIdReference.once('value');
+      // console.log('datasnapshot: ', dataSnapshot.val());
+      dataSnapshot.forEach((shirtRef) => {
+        const shirt = shirtRef.val();
+        // If garment isn't falsey, and if id isn't falsey or not 0 then push into garments array
+        if (shirt && (shirt.id || shirt.id === 0)) {
+          shirts.byId[shirt.id] = shirt;
+        }
+      });
+      // console.log('shirts: ', shirts);
+
+      const shirtsAllIdsReference = await FirebaseRef.child('shirts/allIds');
+
+      const snapshot = await shirtsAllIdsReference.once('value');
+
+      shirts.allIds = snapshot.val();
+
+      /*
+      console.log('shirts done: ', shirts);
+      console.log('shirt.byId.1', shirts.byId[1]);
+      */
+      return onSuccess(shirts);
+    } catch (error) {
+      console.log(error);
+      return onError(error);
+    }
+  };
+}
