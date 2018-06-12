@@ -1,5 +1,7 @@
 import React from 'react';
+import { View } from 'react-native';
 import PropTypes from 'prop-types';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { FlatList, TouchableOpacity, RefreshControl, Image, ScrollView, Dimensions } from 'react-native';
 import { Container, Content, Card, CardItem, Body, Text, Button, DeckSwiper, Left, Thumbnail, Icon } from 'native-base';
 import { Actions } from 'react-native-router-flux';
@@ -7,6 +9,7 @@ import Loading from './Loading';
 import Error from './Error';
 import Header from './Header';
 import Spacer from './Spacer';
+
 
 
 const OutfitMaker = ({
@@ -27,12 +30,63 @@ const OutfitMaker = ({
   const onPress = item => Actions.garment({ match: { params: { id: String(item.id) } } });
 
   return (
-    <Container>
-      <Content padder>
-        <Text>Hello</Text>
-        <Spacer size={50} />
-      </Content>
-    </Container>
+        <KeyboardAwareScrollView>
+          <View style={{ height: 450 }} >
+            <Text h1 style={{ fontSize: 18, textAlign: 'center' }}>Shirt</Text>
+            <DeckSwiper
+              dataSource={garments}
+              renderItem={item =>
+                <Card style={{ elevation: 2 }}>
+                  <CardItem>
+                    <Left>
+                      <Thumbnail source={{ uri: item.imageUrl }} />
+                      <Body>
+                      <Text>{item.title}</Text>
+                      <Text note>{item.brand}</Text>
+                      </Body>
+                    </Left>
+                  </CardItem>
+                  <CardItem cardBody>
+                    <Image style={{ height: 300, flex: 1 }} source={{ uri: item.imageUrl }} />
+                  </CardItem>
+                  <CardItem>
+                    <Icon name="heart" style={{ color: '#ED4A6A' }} />
+                    <Text>{item.description}</Text>
+                  </CardItem>
+                </Card>
+              }
+            />
+          </View>
+          <Spacer size={40} />
+          <View style={{ height: 500 }} >
+            <Text h1 style={{ fontSize: 18, textAlign: 'center' }}>Pants</Text>
+            <DeckSwiper
+              dataSource={garments}
+              renderItem={item =>
+                <Card style={{ elevation: 2 }}>
+                  <CardItem>
+                    <Left>
+                      <Thumbnail source={{ uri: item.imageUrl }} />
+                      <Body>
+                      <Text>{item.title}</Text>
+                      <Text note>{item.brand}</Text>
+                      </Body>
+                    </Left>
+                  </CardItem>
+                  <CardItem cardBody>
+                    <Image style={{ height: 300, flex: 1 }} source={{ uri: item.imageUrl }} />
+                  </CardItem>
+                  <CardItem>
+                    <Icon name="heart" style={{ color: '#ED4A6A' }} />
+                    <Text>{item.description}</Text>
+                  </CardItem>
+                </Card>
+              }
+            />
+          </View>
+          <Spacer size={50} />
+          <View style={{ height: 500, backgroundColor: 'blue' }} />
+        </KeyboardAwareScrollView>
   );
 };
 
