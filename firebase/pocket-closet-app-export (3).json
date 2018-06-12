@@ -1,5 +1,47 @@
 {
   "garments" : {
+    "shirts": {
+      "1" : {
+        "brand" : "Express",
+        "category" : "Dress Shirt",
+        "description" : "Black Classic Express Fitted Dress Shirt",
+        "id" : "1",
+        "imageUrl" : "https://images.express.com/is/image/expressfashion/0020_00302144_0098?cache=on&wid=361&fmt=jpeg&qlt=75,1&resmode=sharp2&op_usm=1,1,5,0&defaultImage=Photo-Coming-Soon",
+        "size" : "Large",
+        "slug" : "1mx-shirt",
+        "title" : "1MX Shirt"
+      },
+      "2" : {
+        "brand" : "Express",
+        "category" : "Dress Shirt",
+        "description" : "Navy Blue Classic Express Fitted Dress Shirt",
+        "id" : "2",
+        "imageUrl" : "https://images.express.com/is/image/expressfashion/0020_00302778_0746_f?cache=on&wid=960&fmt=jpeg&qlt=85,1&resmode=sharp2&op_usm=1,1,5,0&defaultImage=Photo-Coming-Soon",
+        "size" : "Large",
+        "slug" : "1mx-shirt",
+        "title" : "1MX Shirt"
+      },
+      "3" : {
+        "brand" : "Express",
+        "category" : "Dress Shirt",
+        "description" : "White Classic Express Fitted Dress Shirt",
+        "id" : "3",
+        "imageUrl" : "https://images.express.com/is/image/expressfashion/0020_00302147_0001_f901?cache=on&wid=960&fmt=jpeg&qlt=85,1&resmode=sharp2&op_usm=1,1,5,0&defaultImage=Photo-Coming-Soon",
+        "size" : "Large",
+        "slug" : "1mx-shirt",
+        "title" : "1MX Shirt"
+      },
+      "4" : {
+        "brand" : "Express",
+        "category" : "Dress Shirt",
+        "description" : "Classic Express Fitted Dress Shirt",
+        "id" : "4",
+        "imageUrl" : "https://images.express.com/is/image/expressfashion/0020_00302144_0098?cache=on&wid=361&fmt=jpeg&qlt=75,1&resmode=sharp2&op_usm=1,1,5,0&defaultImage=Photo-Coming-Soon",
+        "size" : "Large",
+        "slug" : "1mx-shirt",
+        "title" : "1MX Shirt"
+      }
+    },
     "1" : {
       "brand" : "Express",
       "category" : "Dress Shirt",
