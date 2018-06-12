@@ -30,18 +30,12 @@ const OutfitMaker = ({
 
   const onPress = item => Actions.garment({ match: { params: { id: String(item.id) } } });
 
-  console.log(shirts);
-  const shirtsArray = [];
-  Object.entries(shirts).forEach(keyValue => shirtsArray.push(keyValue[1]));
-  // shirts.forEach(shirt => shirtsArray.push(shirt));
-  console.log(shirtsArray);
-
   return (
         <KeyboardAwareScrollView>
           <View style={{ height: 450 }} >
             <Text h1 style={{ fontSize: 18, textAlign: 'center' }}>Shirt</Text>
             <DeckSwiper
-              dataSource={shirtsArray}
+              dataSource={shirts}
               renderItem={item =>
                 <Card style={{ elevation: 2 }}>
                   <CardItem>

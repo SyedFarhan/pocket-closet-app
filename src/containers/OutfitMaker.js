@@ -51,6 +51,12 @@ class OutfitMaker extends Component {
     return this.props.getShirts();
   }
 
+  createArrayFromObjectProperties(object) {
+    const objectArray = [];
+    Object.entries(object).forEach(keyValue => objectArray.push(keyValue[1]));
+    return objectArray;
+  }
+
   render = () => {
     const { Layout, garments, match, shirts } = this.props;
     const id = (match && match.params && match.params.id) ? match.params.id : null;
@@ -60,7 +66,7 @@ class OutfitMaker extends Component {
         error={garments.error}
         loading={garments.loading}
         garments={garments.garments}
-        shirts={shirts.shirts.byId}
+        shirts={this.createArrayFromObjectProperties(shirts.shirts.byId)}
         deleteGarment={this.props.deleteGarment}
         addGarment={this.props.addGarment}
       />
