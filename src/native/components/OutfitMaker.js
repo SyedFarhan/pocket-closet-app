@@ -19,6 +19,7 @@ const OutfitMaker = ({
   shirts,
   reFetch,
   deleteGarment,
+  pants,
 }) => {
   // Loading
   if (loading) return <Loading />;
@@ -26,13 +27,13 @@ const OutfitMaker = ({
   // Error
   if (error) return <Error content={error} />;
 
-  const keyExtractor = item => item.id;
+  // const keyExtractor = item => item.id;
 
-  const onPress = item => Actions.garment({ match: { params: { id: String(item.id) } } });
+  // const onPress = item => Actions.garment({ match: { params: { id: String(item.id) } } });
 
   return (
         <KeyboardAwareScrollView>
-          <View style={{ height: 450 }} >
+          <View style={{ height: 225 }} >
             <Text h1 style={{ fontSize: 18, textAlign: 'center' }}>Shirt</Text>
             <DeckSwiper
               dataSource={shirts}
@@ -40,15 +41,15 @@ const OutfitMaker = ({
                 <Card style={{ elevation: 2 }}>
                   <CardItem>
                     <Left>
-                      <Thumbnail source={{ uri: item.imageUrl }} />
+                      <Thumbnail source={{ uri: 'https://botw-pd.s3.amazonaws.com/styles/logo-thumbnail/s3/082016/untitled-1_11.jpg?itok=mzt0yUwz' }} />
                       <Body>
-                      <Text>{item.title}</Text>
-                      <Text note>{item.brand}</Text>
+                        <Text>{item.title}</Text>
+                        <Text note>{item.brand}</Text>
                       </Body>
                     </Left>
                   </CardItem>
-                  <CardItem cardBody>
-                    <Image style={{ height: 300, flex: 1 }} source={{ uri: item.imageUrl }} />
+                  <CardItem style={{ justifyContent: 'center' }} cardBody>
+                    <Image style={{ height: 150, flex: 0.35 }} source={{ uri: item.imageUrl }} />
                   </CardItem>
                   <CardItem>
                     <Icon name="heart" style={{ color: '#ED4A6A' }} />
@@ -58,24 +59,24 @@ const OutfitMaker = ({
               }
             />
           </View>
-          <Spacer size={40} />
-          <View style={{ height: 500 }} >
+          <Spacer size={90} />
+          <View style={{ height: 200 }} >
             <Text h1 style={{ fontSize: 18, textAlign: 'center' }}>Pants</Text>
             <DeckSwiper
-              dataSource={garments}
+              dataSource={pants}
               renderItem={item =>
                 <Card style={{ elevation: 2 }}>
                   <CardItem>
                     <Left>
-                      <Thumbnail source={{ uri: item.imageUrl }} />
+                      <Thumbnail source={{ uri: 'http://www.hm.com/entrance/entrance-assets/static/site/img/choosecountry/HM-Share-Image.jpg' }} />
                       <Body>
-                      <Text>{item.title}</Text>
-                      <Text note>{item.brand}</Text>
+                        <Text>{item.title}</Text>
+                        <Text note>{item.brand}</Text>
                       </Body>
                     </Left>
                   </CardItem>
-                  <CardItem cardBody>
-                    <Image style={{ height: 300, flex: 1 }} source={{ uri: item.imageUrl }} />
+                  <CardItem style={{ justifyContent: 'center' }} cardBody>
+                    <Image style={{ height: 150, flex: 0.30 }} source={{ uri: item.imageUrl }} />
                   </CardItem>
                   <CardItem>
                     <Icon name="heart" style={{ color: '#ED4A6A' }} />
@@ -86,7 +87,7 @@ const OutfitMaker = ({
             />
           </View>
           <Spacer size={50} />
-          <View style={{ height: 500, backgroundColor: 'blue' }} />
+          <View style={{ height: 500 }} />
         </KeyboardAwareScrollView>
   );
 };

@@ -241,3 +241,50 @@ export function getShirts() {
     }
   };
 }
+
+export function getPants() {
+  return async (dispatch) => {
+    function onSuccess(pants) {
+      dispatch({ type: 'GET_ALL_PANTS', data: pants });
+      return pants;
+    }
+
+    function onError(error) {
+      dispatch({ type: 'ERROR_GENERATED', error });
+      return error;
+    }
+
+    try {
+      let pants = { byId: {} };
+
+      // get shirts reference
+      const pantsByIdReference = await FirebaseRef.child('pants/byId');
+
+      const dataSnapshot = await pantsByIdReference.once('value');
+      // console.log('datasnapshot: ', dataSnapshot.val());
+      dataSnapshot.forEach((pantRef) => {
+        const pant = pantRef.val();
+        // If garment isn't falsey, and if id isn't falsey or not 0 then push into garments array
+        if (pant && (pant.id || pant.id === 0)) {
+          pants.byId[pant.id] = pant;
+        }
+      });
+      // console.log('shirts: ', shirts);
+
+      const pantsAllIdsReference = await FirebaseRef.child('pants/allIds');
+
+      const snapshot = await pantsAllIdsReference.once('value');
+
+      pants.allIds = snapshot.val();
+
+      /*
+      console.log('shirts done: ', shirts);
+      console.log('shirt.byId.1', shirts.byId[1]);
+      */
+      return onSuccess(pants);
+    } catch (error) {
+      console.log(error);
+      return onError(error);
+    }
+  };
+}

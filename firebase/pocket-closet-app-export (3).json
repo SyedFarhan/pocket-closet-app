@@ -89,6 +89,28 @@
   },
   "pants": {
     "byId": {
-    }
+      "101": {
+        "brand" : "H&M",
+        "category" : "Dress Pants",
+        "description" : "Chinos in washed cotton twill. Regular waist and zip fly with button. Side pockets, welt back pockets, and skinny legs. Skinny fit.",
+        "id" : "101",
+        "imageUrl" : "http://lp.hm.com/hmprod?set=source%5B%2Fmodel%2F2017%2FF00%200491912%20006%2055%201226.jpg%5D%2Cmedia_type%5BSTILL_LIFE_FRONT%5D%2Ctshirt_size%5BL%5D%2Cquality%5BH%5D%2Chmver%5B1%5D&call=url%5Bfile%3A%2Flegacy%2Fv1%2Fproduct.chain%5D",
+        "size" : "Large",
+        "slug" : "cotton-chinos-skinny-fit",
+        "title" : "Cotton Chinos Skinny Fit"
+      },
+      "102": {
+        "brand" : "H&M",
+        "category" : "Dress Pants",
+        "description" : "Chinos in washed cotton twill. Regular waist and zip fly with button. Side pockets, welt back pockets, and skinny legs. Skinny fit.",
+        "id" : "102",
+        "imageUrl" : "http://lp.hm.com/hmprod?set=source%5B%2Fmodel%2F2017%2FG00%200452516%20012%2066%202041.jpg%5D%2Cmedia_type%5BSTILL_LIFE_FRONT%5D%2Ctshirt_size%5BL%5D%2Cquality%5BH%5D%2Chmver%5B1%5D&call=url%5Bfile%3A%2Flegacy%2Fv1%2Fproduct.chain%5D",
+        "size" : "Large",
+        "slug" : "suit-pants-skinny-fit",
+        "title" : "Suit Pants Skinny Fit"
+      }
+    },
+    "allIds": [ "101", "102" ]
   }
 }
+

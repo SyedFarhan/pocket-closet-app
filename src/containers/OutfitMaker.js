@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { addGarment, deleteGarment, getGarments, getMeals, setError, getShirts } from '../actions/garments';
+import { addGarment, deleteGarment, getGarments, getMeals, setError, getShirts, getPants } from '../actions/garments';
 
 class OutfitMaker extends Component {
   static propTypes = {
@@ -22,6 +22,7 @@ class OutfitMaker extends Component {
     setError: PropTypes.func.isRequired,
     addGarment: PropTypes.func.isRequired,
     getShirts: PropTypes.func.isRequired,
+    getPants: PropTypes.func.isRequired,
   }
 
   static defaultProps = {
@@ -30,7 +31,9 @@ class OutfitMaker extends Component {
 
   componentDidMount = () => {
     this.fetchShirts();
+    this.fetchPants();
     console.log(this.props.shirts);
+    console.log(this.props.pants);
   };
 
   /**
@@ -51,6 +54,11 @@ class OutfitMaker extends Component {
     return this.props.getShirts();
   }
 
+  fetchPants = () => {
+    console.log('fetching pants');
+    return this.props.getPants();
+  }
+
   createArrayFromObjectProperties(object) {
     const objectArray = [];
     Object.entries(object).forEach(keyValue => objectArray.push(keyValue[1]));
@@ -58,7 +66,7 @@ class OutfitMaker extends Component {
   }
 
   render = () => {
-    const { Layout, garments, match, shirts } = this.props;
+    const { Layout, garments, match, shirts, pants } = this.props;
     const id = (match && match.params && match.params.id) ? match.params.id : null;
 
     return (
@@ -67,6 +75,7 @@ class OutfitMaker extends Component {
         loading={garments.loading}
         garments={garments.garments}
         shirts={this.createArrayFromObjectProperties(shirts.shirts.byId)}
+        pants={this.createArrayFromObjectProperties(pants.pants.byId)}
         deleteGarment={this.props.deleteGarment}
         addGarment={this.props.addGarment}
       />
@@ -77,6 +86,7 @@ class OutfitMaker extends Component {
 const mapStateToProps = state => ({
   garments: state.garments || {},
   shirts: state.shirts || {},
+  pants: state.pants || {},
 });
 
 
@@ -87,6 +97,7 @@ const mapDispatchToProps = dispatch => bindActionCreators({
   getMeals,
   setError,
   getShirts,
+  getPants,
 }, dispatch);
 
 
