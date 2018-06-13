@@ -5,6 +5,19 @@ import { connect } from 'react-redux';
 
 import { addGarment } from '../actions/garments';
 
+let mockGarment = {
+  slug: '1mx-shirt',
+  title: '1MX Shirt',
+  brand: 'Express',
+  size: 'Large',
+  description: 'Classic Express  FDress Shirt',
+  category: 'Jeans',
+  id: '40',
+  imageUrl: 'https://images.express.com/is/image/expressfashion/0020_00302144_0098?cache=on&wid=361&fmt=jpeg&qlt=75,1&resmode=sharp2&op_usm=1,1,5,0&defaultImage=Photo-Coming-Soon',
+  laundryInstructions: {},
+  tags: [],
+};
+
 class GarmentSearch extends Component {
   static propTypes = {
     Layout: PropTypes.func.isRequired,
@@ -18,6 +31,28 @@ class GarmentSearch extends Component {
     match: null,
   }
 
+  constructor(props) {
+    super(props);
+    console.log(this.props);
+    this.state = {
+      selectedStore: '',
+      barcode: '',
+      searched: false,
+    };
+  }
+
+  onStoreChange = (value) => {
+    this.setState({
+      selectedStore: value,
+    });
+  }
+
+  onTextChange = (e) => {
+    this.setState({
+      barcode: e,
+    });
+  }
+
   render = () => {
     const { Layout, match } = this.props;
     const id = (match && match.params && match.params.id) ? match.params.id : null;
@@ -25,6 +60,10 @@ class GarmentSearch extends Component {
     return (
       <Layout
         addGarment={this.props.addGarment}
+        garment={mockGarment}
+        onValueChange={this.onStoreChange}
+        pickerSelection={this.state.selectedStore}
+        inputText={this.state.barcode}
       />
     );
   }

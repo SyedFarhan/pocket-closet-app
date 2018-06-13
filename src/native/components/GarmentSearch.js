@@ -5,32 +5,17 @@ import { Container, Content, Text, H1, Button, Form, Picker, Item, Input, Left, 
 import Spacer from './Spacer';
 import StyledCard from './StyledCard';
 
-
-// MOCK DATA
-var mockGarment = {
-  slug: '1mx-shirt',
-  title: '1MX Shirt',
-  brand: 'Express',
-  size: 'Large',
-  description: 'Classic Express  FDress Shirt',
-  category: 'Jeans',
-  id: '40',
-  imageUrl: 'https://images.express.com/is/image/expressfashion/0020_00302144_0098?cache=on&wid=361&fmt=jpeg&qlt=75,1&resmode=sharp2&op_usm=1,1,5,0&defaultImage=Photo-Coming-Soon',
-  laundryInstructions: {},
-  tags: [],
-}
-
 class GarmentSearch extends React.Component {
   static propTypes = {
-    Layout: PropTypes.func,
-    addGarment: PropTypes.func,
+    addGarment: PropTypes.func.isRequired,
+    garment: PropTypes.shape().isRequired,
+    pickerSelection: PropTypes.string.isRequired,
   }
 
   constructor(props) {
     super(props);
     console.log(this.props);
     this.state = {
-      selected: undefined,
       barcode: '',
       searched: false,
     };
@@ -50,15 +35,16 @@ class GarmentSearch extends React.Component {
 
   render() {
     let showImage;
-    if (this.state.searched)
+    if (this.state.searched) {
       showImage = (
         <StyledCard
           addGarment={this.props.addGarment}
-          garment={mockGarment}
+          garment={this.props.garment}
         />
       );
-    else
-      showImage = <View></View>;
+    } else {
+      showImage = <View />;
+    }
     return (
       <Container>
         <Content padder>
@@ -76,8 +62,8 @@ class GarmentSearch extends React.Component {
               placeholderStyle={{ color: '#2874F0' }}
               note={false}
               style={{ width: undefined }}
-              selectedValue={this.state.selected}
-              onValueChange={this.onValueChange}
+              selectedValue={this.props.pickerSelection}
+              onValueChange={this.props.onValueChange}
             >
               <Picker.Item label="H&M" value="key0" />
               <Picker.Item label="Express" value="key1" />
@@ -94,7 +80,10 @@ class GarmentSearch extends React.Component {
                 </Left>
                 <Right>
                   <Item rounded>
-                    <Button containerStyle={{ flex: 1 }} onPress={() => this.setState({ searched: true })}>
+                    <Button
+                      containerStyle={{ flex: 1 }}
+                      onPress={() => this.setState({ searched: true })}
+                    >
                       <Text>
                         Search
                       </Text>
