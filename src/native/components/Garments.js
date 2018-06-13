@@ -65,7 +65,7 @@ const GarmentListing = ({
                       await deleteGarment(item.id);
                     }}
                   >
-                    <Text>View Details</Text>
+                    <Text>Delete</Text>
                   </Button>
                   <Spacer size={5} />
                 </Body>

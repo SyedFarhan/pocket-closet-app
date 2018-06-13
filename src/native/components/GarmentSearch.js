@@ -1,9 +1,8 @@
 import React from 'react';
-import { View, Image } from 'react-native';
+import { View } from 'react-native';
 import PropTypes from 'prop-types';
-import { Container, Content, Text, H1, Button, Form, Picker, Item, Input, Card, CardItem, Left, Right, Body, Icon } from 'native-base';
+import { Container, Content, Text, H1, Button, Form, Picker, Item, Input, Left, Right } from 'native-base';
 import Spacer from './Spacer';
-import Error from './Error';
 import StyledCard from './StyledCard';
 
 
@@ -13,7 +12,7 @@ var mockGarment = {
   title: '1MX Shirt',
   brand: 'Express',
   size: 'Large',
-  description: 'Classic Express FIttedDress Shirt',
+  description: 'Classic Express  FDress Shirt',
   category: 'Jeans',
   id: '40',
   imageUrl: 'https://images.express.com/is/image/expressfashion/0020_00302144_0098?cache=on&wid=361&fmt=jpeg&qlt=75,1&resmode=sharp2&op_usm=1,1,5,0&defaultImage=Photo-Coming-Soon',
@@ -24,10 +23,6 @@ var mockGarment = {
 class GarmentSearch extends React.Component {
   static propTypes = {
     Layout: PropTypes.func,
-    deleteGarment: PropTypes.func,
-    getGarments: PropTypes.func,
-    getMeals: PropTypes.func,
-    setError: PropTypes.func,
     addGarment: PropTypes.func,
   }
 
@@ -63,7 +58,7 @@ class GarmentSearch extends React.Component {
         />
       );
     else
-      showImage = <Error />;
+      showImage = <View></View>;
     return (
       <Container>
         <Content padder>
@@ -90,16 +85,26 @@ class GarmentSearch extends React.Component {
               <Picker.Item label="Old Navy" value="key3" />
               <Picker.Item label="Macys" value="key4" />
             </Picker>
-            <Item rounded>
-              <Input placeholder='Enter the Barcode #' value={this.state.barcode} onChangeText={e => this.onTextChange(e)} />
-            </Item>
+            <View>
+              <Item>
+                <Left>
+                  <Item rounded>
+                    <Input style={{ flex: 1 }} placeholder="Enter the Barcode #" value={this.state.barcode} onChangeText={e => this.onTextChange(e)} />
+                  </Item>
+                </Left>
+                <Right>
+                  <Item rounded>
+                    <Button containerStyle={{ flex: 1 }} onPress={() => this.setState({ searched: true })}>
+                      <Text>
+                        Search
+                      </Text>
+                    </Button>
+                  </Item>
+                </Right>
+              </Item>
+            </View>
           </Form>
           <Spacer size={10} />
-          <Button onPress={() => this.setState({ searched: true })}>
-            <Text>
-              Search
-            </Text>
-          </Button>
           {showImage}
         </Content>
       </Container>

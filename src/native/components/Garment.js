@@ -22,7 +22,6 @@ const GarmentView = ({
 
   // Garment not found
   if (!garment) return <Error content={ErrorMessages.garment404} />;
-  console.log('Garment: ', garment);
   return (
     <Container>
       <Content padder>
