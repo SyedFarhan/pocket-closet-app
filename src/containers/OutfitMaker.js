@@ -14,6 +14,15 @@ class OutfitMaker extends Component {
     pants: PropTypes.shape().isRequired,
   }
 
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      selectedShirt: null,
+      selectedPant: null,
+    };
+  }
+
   componentDidMount = () => {
     this.fetchShirts();
     this.fetchPants();
@@ -37,6 +46,16 @@ class OutfitMaker extends Component {
     return objectArray;
   }
 
+  onItemSelect = (item) => {
+    if (item.category == 'shirt')
+      this.setState({ selectedShirt: item });
+    else if (item.category == 'pants')
+      this.setState({ selectedPant: item });
+    else
+      this.setState({ selectedShirt: null });
+    console.log(this.state.selectedShirt);
+  }
+
   render = () => {
     const { Layout, shirts, pants } = this.props;
 
@@ -44,6 +63,9 @@ class OutfitMaker extends Component {
       <Layout
         shirts={this.createArrayFromObjectProperties(shirts.shirts.byId)}
         pants={this.createArrayFromObjectProperties(pants.pants.byId)}
+        onItemSelect={this.onItemSelect}
+        selectedShirt={this.state.selectedShirt}
+        selectedPant={this.state.selectedPant}
       />
     );
   }
