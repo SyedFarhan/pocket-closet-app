@@ -13,19 +13,13 @@ class GarmentSearch extends React.Component {
     pickerSelection: PropTypes.string.isRequired,
     onTextChange: PropTypes.func.isRequired,
     inputText: PropTypes.string.isRequired,
-  }
-
-  constructor(props) {
-    super(props);
-    console.log(this.props);
-    this.state = {
-      searched: false,
-    };
+    onSearch: PropTypes.func.isRequired,
+    searched: PropTypes.bool.isRequired,
   }
 
   render() {
     let showImage;
-    if (this.state.searched) {
+    if (this.props.inputText !== '' && this.props.pickerSelection !== '' && this.props.searched) {
       showImage = (
         <StyledCard
           addGarment={this.props.addGarment}
@@ -72,7 +66,7 @@ class GarmentSearch extends React.Component {
                   <Item rounded>
                     <Button
                       containerStyle={{ flex: 1 }}
-                      onPress={() => this.setState({ searched: true })}
+                      onPress={() => this.props.onSearch(this.props.pickerSelection, this.props.inputText)}
                     >
                       <Text>
                         Search

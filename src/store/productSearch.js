@@ -4,5 +4,5 @@ export default {
   brand: '',
   barcode: '',
   searched: false,
-  garment: {},
+  searchResult: {},
 };

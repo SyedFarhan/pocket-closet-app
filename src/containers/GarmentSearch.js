@@ -3,22 +3,10 @@ import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { replaceBrand, replaceBarcode } from '../actions/productSearch';
+import { replaceBrand, replaceBarcode, initiateSearch, resetSearchForm } from '../actions/productSearch';
 
 import { addGarment } from '../actions/garments';
 
-let mockGarment = {
-  slug: '1mx-shirt',
-  title: '1MX Shirt',
-  brand: 'Express',
-  size: 'Large',
-  description: 'Classic Express  FDress Shirt',
-  category: 'Jeans',
-  id: '40',
-  imageUrl: 'https://images.express.com/is/image/expressfashion/0020_00302144_0098?cache=on&wid=361&fmt=jpeg&qlt=75,1&resmode=sharp2&op_usm=1,1,5,0&defaultImage=Photo-Coming-Soon',
-  laundryInstructions: {},
-  tags: [],
-};
 
 class GarmentSearch extends Component {
   static propTypes = {
@@ -30,6 +18,8 @@ class GarmentSearch extends Component {
     addGarment: PropTypes.func.isRequired,
     replaceBrand: PropTypes.func.isRequired,
     replaceBarcode: PropTypes.func.isRequired,
+    initiateSearch: PropTypes.func.isRequired,
+    resetSearchForm: PropTypes.func.isRequired,
   }
 
   static defaultProps = {
@@ -38,10 +28,8 @@ class GarmentSearch extends Component {
 
   constructor(props) {
     super(props);
-    console.log(this.props);
-    this.state = {
-      searched: false,
-    };
+
+    this.props.resetSearchForm();
   }
 
   render = () => {
@@ -51,11 +39,13 @@ class GarmentSearch extends Component {
     return (
       <Layout
         addGarment={this.props.addGarment}
-        garment={mockGarment}
+        garment={this.props.productSearch.searchResult}
         onValueChange={this.props.replaceBrand}
         pickerSelection={this.props.productSearch.brand}
         onTextChange={this.props.replaceBarcode}
         inputText={this.props.productSearch.barcode}
+        onSearch={this.props.initiateSearch}
+        searched={this.props.productSearch.searched}
       />
     );
   }
@@ -69,7 +59,9 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => bindActionCreators({
   addGarment,
   replaceBrand,
-  replaceBarcode
+  replaceBarcode,
+  initiateSearch,
+  resetSearchForm,
 }, dispatch);
 
 
