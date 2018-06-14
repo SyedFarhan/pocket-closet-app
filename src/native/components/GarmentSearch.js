@@ -9,28 +9,18 @@ class GarmentSearch extends React.Component {
   static propTypes = {
     addGarment: PropTypes.func.isRequired,
     garment: PropTypes.shape().isRequired,
+    onValueChange: PropTypes.func.isRequired,
     pickerSelection: PropTypes.string.isRequired,
+    onTextChange: PropTypes.func.isRequired,
+    inputText: PropTypes.string.isRequired,
   }
 
   constructor(props) {
     super(props);
     console.log(this.props);
     this.state = {
-      barcode: '',
       searched: false,
     };
-  }
-
-  onValueChange = (value) => {
-    this.setState({
-      selected: value,
-    });
-  }
-
-  onTextChange = (e) => {
-    this.setState({
-      barcode: e,
-    });
   }
 
   render() {
@@ -75,7 +65,7 @@ class GarmentSearch extends React.Component {
               <Item>
                 <Left>
                   <Item rounded>
-                    <Input style={{ flex: 1 }} placeholder="Enter the Barcode #" value={this.state.barcode} onChangeText={e => this.onTextChange(e)} />
+                    <Input style={{ flex: 1 }} placeholder="Enter the Barcode #" value={this.props.inputText} onChangeText={e => this.props.onTextChange(e)} />
                   </Item>
                 </Left>
                 <Right>

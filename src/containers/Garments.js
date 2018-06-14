@@ -18,7 +18,6 @@ class GarmentListing extends Component {
     }),
     deleteGarment: PropTypes.func.isRequired,
     getGarments: PropTypes.func.isRequired,
-    getMeals: PropTypes.func.isRequired,
     setError: PropTypes.func.isRequired,
   }
 
@@ -36,7 +35,6 @@ class GarmentListing extends Component {
   fetchGarments = () => {
     console.log('fetching');
     return this.props.getGarments()
-      .then(() => this.props.getMeals())
       .catch((err) => {
         console.log(`Error: ${err}`);
         return this.props.setError(err);
@@ -64,19 +62,10 @@ const mapStateToProps = state => ({
   garments: state.garments || {},
 });
 
-/*
-const mapDispatchToProps = {
-  deleteGarment,
-  getGarments,
-  getMeals,
-  setError,
-};
-*/
 
 const mapDispatchToProps = dispatch => bindActionCreators({
   deleteGarment,
   getGarments,
-  getMeals,
   setError,
 }, dispatch);
 

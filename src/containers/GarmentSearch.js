@@ -47,7 +47,7 @@ class GarmentSearch extends Component {
     });
   }
 
-  onTextChange = (e) => {
+  onBarcodeChange = (e) => {
     this.setState({
       barcode: e,
     });
@@ -63,6 +63,7 @@ class GarmentSearch extends Component {
         garment={mockGarment}
         onValueChange={this.onStoreChange}
         pickerSelection={this.state.selectedStore}
+        onTextChange={this.onBarcodeChange}
         inputText={this.state.barcode}
       />
     );
@@ -78,4 +79,4 @@ const mapDispatchToProps = dispatch => bindActionCreators({
 }, dispatch);
 
 
-export default connect(mapDispatchToProps)(GarmentSearch);
+export default connect(null, mapDispatchToProps)(GarmentSearch);
