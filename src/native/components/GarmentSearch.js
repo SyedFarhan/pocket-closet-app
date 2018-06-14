@@ -15,10 +15,12 @@ class GarmentSearch extends React.Component {
     inputText: PropTypes.string.isRequired,
     onSearch: PropTypes.func.isRequired,
     searched: PropTypes.bool.isRequired,
+    resetForm: PropTypes.func.isRequired,
   }
 
   render() {
     let showImage;
+    let button;
     if (this.props.inputText !== '' && this.props.pickerSelection !== '' && this.props.searched) {
       showImage = (
         <StyledCard
@@ -26,8 +28,29 @@ class GarmentSearch extends React.Component {
           garment={this.props.garment}
         />
       );
+      button = (
+        <Button
+          danger
+          containerStyle={{ flex: 1 }}
+          onPress={() => this.props.resetForm()}
+        >
+          <Text>
+            Clear
+          </Text>
+        </Button>
+      );
     } else {
       showImage = <View />;
+      button = (
+        <Button
+          containerStyle={{ flex: 1 }}
+          onPress={() => this.props.onSearch(this.props.pickerSelection, this.props.inputText)}
+        >
+          <Text>
+            Search
+          </Text>
+        </Button>
+      );
     }
     return (
       <Container>
@@ -64,14 +87,7 @@ class GarmentSearch extends React.Component {
                 </Left>
                 <Right>
                   <Item rounded>
-                    <Button
-                      containerStyle={{ flex: 1 }}
-                      onPress={() => this.props.onSearch(this.props.pickerSelection, this.props.inputText)}
-                    >
-                      <Text>
-                        Search
-                      </Text>
-                    </Button>
+                    {button}
                   </Item>
                 </Right>
               </Item>

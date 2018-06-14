@@ -46,6 +46,7 @@ class GarmentSearch extends Component {
         inputText={this.props.productSearch.barcode}
         onSearch={this.props.initiateSearch}
         searched={this.props.productSearch.searched}
+        resetForm={this.props.resetSearchForm}
       />
     );
   }
