@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
+import { replaceBrand } from '../actions/productSearch';
+
 import { addGarment } from '../actions/garments';
 
 let mockGarment = {
@@ -21,10 +23,12 @@ let mockGarment = {
 class GarmentSearch extends Component {
   static propTypes = {
     Layout: PropTypes.func.isRequired,
+    productSearch: PropTypes.shape().isRequired,
     match: PropTypes.shape({
       params: PropTypes.shape({}),
     }),
     addGarment: PropTypes.func.isRequired,
+    replaceBrand: PropTypes.func.isRequired,
   }
 
   static defaultProps = {
@@ -35,16 +39,9 @@ class GarmentSearch extends Component {
     super(props);
     console.log(this.props);
     this.state = {
-      selectedStore: '',
       barcode: '',
       searched: false,
     };
-  }
-
-  onStoreChange = (value) => {
-    this.setState({
-      selectedStore: value,
-    });
   }
 
   onBarcodeChange = (e) => {
@@ -61,8 +58,8 @@ class GarmentSearch extends Component {
       <Layout
         addGarment={this.props.addGarment}
         garment={mockGarment}
-        onValueChange={this.onStoreChange}
-        pickerSelection={this.state.selectedStore}
+        onValueChange={this.props.replaceBrand}
+        pickerSelection={this.props.productSearch.brand}
         onTextChange={this.onBarcodeChange}
         inputText={this.state.barcode}
       />
@@ -71,12 +68,14 @@ class GarmentSearch extends Component {
 }
 
 const mapStateToProps = state => ({
+  productSearch: state.productSearch || {},
 });
 
 
 const mapDispatchToProps = dispatch => bindActionCreators({
   addGarment,
+  replaceBrand,
 }, dispatch);
 
 
-export default connect(null, mapDispatchToProps)(GarmentSearch);
+export default connect(mapStateToProps, mapDispatchToProps)(GarmentSearch);

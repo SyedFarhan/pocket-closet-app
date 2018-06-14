@@ -4,6 +4,7 @@ import garments from './garments';
 import locale from './locale';
 import shirts from './shirts';
 import pants from './pants';
+import productSearch from './productSearch';
 
 const rehydrated = (state = false, action) => {
   switch (action.type) {
@@ -21,5 +22,6 @@ export default {
   garments,
   locale,
   shirts,
-  pants
+  pants,
+  productSearch,
 };
