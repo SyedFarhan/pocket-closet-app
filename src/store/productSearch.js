@@ -1,7 +1,7 @@
 export default {
   loading: false,
   error: false,
-  store: '',
+  brand: '',
   barcode: '',
   searched: false,
   garment: {},
