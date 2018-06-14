@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { replaceBrand } from '../actions/productSearch';
+import { replaceBrand, replaceBarcode } from '../actions/productSearch';
 
 import { addGarment } from '../actions/garments';
 
@@ -29,6 +29,7 @@ class GarmentSearch extends Component {
     }),
     addGarment: PropTypes.func.isRequired,
     replaceBrand: PropTypes.func.isRequired,
+    replaceBarcode: PropTypes.func.isRequired,
   }
 
   static defaultProps = {
@@ -39,15 +40,8 @@ class GarmentSearch extends Component {
     super(props);
     console.log(this.props);
     this.state = {
-      barcode: '',
       searched: false,
     };
-  }
-
-  onBarcodeChange = (e) => {
-    this.setState({
-      barcode: e,
-    });
   }
 
   render = () => {
@@ -60,8 +54,8 @@ class GarmentSearch extends Component {
         garment={mockGarment}
         onValueChange={this.props.replaceBrand}
         pickerSelection={this.props.productSearch.brand}
-        onTextChange={this.onBarcodeChange}
-        inputText={this.state.barcode}
+        onTextChange={this.props.replaceBarcode}
+        inputText={this.props.productSearch.barcode}
       />
     );
   }
@@ -75,6 +69,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => bindActionCreators({
   addGarment,
   replaceBrand,
+  replaceBarcode
 }, dispatch);
 
 

@@ -10,6 +10,12 @@ export default function productSearchReducer(state = initialState, action) {
         brand: action.data || '',
       };
     }
+    case 'BARCODE_REPLACE': {
+      return {
+        ...state,
+        barcode: action.data || '',
+      };
+    }
     default:
       return state;
   }

@@ -4,3 +4,10 @@ export function replaceBrand(brand) {
     data: brand,
   });
 }
+
+export function replaceBarcode(barcode) {
+  return dispatch => dispatch({
+    type: 'BARCODE_REPLACE',
+    data: barcode,
+  });
+}
