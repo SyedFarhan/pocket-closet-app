@@ -4,12 +4,10 @@ export const initialState = Store;
 
 export default function garmentReducer(state = initialState, action) {
   switch (action.type) {
-    case 'MEALS_REPLACE': {
+    case 'FAVOURITES_REPLACE': {
       return {
         ...state,
-        error: null,
-        loading: false,
-        meals: action.data,
+        favourites: action.data || [],
       };
     }
     case 'GARMENTS_ERROR': {
@@ -43,7 +41,7 @@ export default function garmentReducer(state = initialState, action) {
     case 'GARMENT_ADD': {
       let garments = [];
       console.log('garments replace');
-      // Pick out the props I need
+      // Append the new garment to the array of garments
       if (action.data && typeof action.data === 'object') {
         garments = [...state.garments, action.data];
       }
