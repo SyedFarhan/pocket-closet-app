@@ -4,6 +4,9 @@ import PropTypes from 'prop-types';
 import { Container, Content, Text, H1, Button, Form, Picker, Item, Input, Left, Right } from 'native-base';
 import Spacer from './Spacer';
 import StyledCard from './StyledCard';
+import ClearButton from './ClearButton';
+import SearchButton from './SearchButton';
+
 
 class GarmentSearch extends React.Component {
   static propTypes = {
@@ -18,6 +21,10 @@ class GarmentSearch extends React.Component {
     resetForm: PropTypes.func.isRequired,
   }
 
+  onGarmentSearch = () => {
+    this.props.onSearch(this.props.pickerSelection, this.props.inputText);
+  };
+
   render() {
     let showImage;
     let button;
@@ -28,30 +35,12 @@ class GarmentSearch extends React.Component {
           garment={this.props.garment}
         />
       );
-      button = (
-        <Button
-          danger
-          containerStyle={{ flex: 1 }}
-          onPress={() => this.props.resetForm()}
-        >
-          <Text>
-            Clear
-          </Text>
-        </Button>
-      );
+      button = <ClearButton onClear={this.props.resetForm} />;
     } else {
       showImage = <View />;
-      button = (
-        <Button
-          containerStyle={{ flex: 1 }}
-          onPress={() => this.props.onSearch(this.props.pickerSelection, this.props.inputText)}
-        >
-          <Text>
-            Search
-          </Text>
-        </Button>
-      );
+      button = <SearchButton onSearch={this.onGarmentSearch} />;
     }
+
     return (
       <Container>
         <Content padder>
@@ -64,7 +53,8 @@ class GarmentSearch extends React.Component {
           <Spacer size={20} />
           <Form>
             <Picker
-              mode="dropdown"
+              mode="dialog"
+              prompt="Select a brand"
               placeholder="Select Store"
               placeholderStyle={{ color: '#2874F0' }}
               note={false}
