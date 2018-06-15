@@ -6,6 +6,7 @@ import { Card, CardItem, Body, Text, Button, DeckSwiper, Left, Thumbnail, Icon }
 import Spacer from './Spacer';
 
 import GarmentDeckSwiper from './GarmentDeckSwiper';
+import SelectedGarment from './SelectedGarment';
 
 
 const OutfitMaker = ({
@@ -13,7 +14,7 @@ const OutfitMaker = ({
   pants,
   onItemSelect,
   selectedShirt,
-  selectedPant
+  selectedPant,
 }) => {
   // Loading
   // if (loading) return <Loading />;
@@ -24,19 +25,12 @@ const OutfitMaker = ({
   // const keyExtractor = item => item.id;
 
   // const onPress = item => Actions.garment({ match: { params: { id: String(item.id) } } });
-  let alignItems = 'flex-start';
-  if (selectedShirt != null) alignItems = 'center';
-
-
   return (
         <KeyboardAwareScrollView>
           <View style={{ height: 250 }}>
             <Text h1 style={{ fontSize: 18, textAlign: 'center' }}>Shirt</Text>
             {selectedShirt ?
-              <Image
-                style={{ height: 225, width: 225, flex: 1, alignItems: 'center' }}
-                source={{ uri: selectedShirt.imageUrl }}
-              />
+              <SelectedGarment selection={selectedShirt} />
               :
               <GarmentDeckSwiper data={shirts} onCardSelect={onItemSelect} />
             }
@@ -45,10 +39,7 @@ const OutfitMaker = ({
           <View style={{ height: 250 }} >
             <Text h1 style={{ fontSize: 18, textAlign: 'center' }}>Pants</Text>
             {selectedPant ?
-              <Image
-                style={{ height: 225, width: 180, flex: 1 }}
-                source={{ uri: selectedPant.imageUrl }}
-              />
+              <SelectedGarment selection={selectedPant} />
               :
               <GarmentDeckSwiper data={pants} onCardSelect={onItemSelect} />
             }
@@ -62,6 +53,9 @@ const OutfitMaker = ({
 OutfitMaker.propTypes = {
   shirts: PropTypes.arrayOf(PropTypes.shape()).isRequired,
   pants: PropTypes.arrayOf(PropTypes.shape()).isRequired,
+  onItemSelect: PropTypes.func.isRequired,
+  selectedShirt: PropTypes.shape(),
+  selectedPant: PropTypes.shape(),
 };
 
 export default OutfitMaker;
