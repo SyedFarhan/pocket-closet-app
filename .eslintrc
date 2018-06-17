@@ -1,8 +1,10 @@
 {
-  "extends": "airbnb",
+  "plugins": ["jsx-control-statements"],
+  "extends": ["airbnb", "plugin:jsx-control-statements/recommended"],
   "parser": "babel-eslint",
   "ecmaFeatures": {
     "classes": true,
+    "jsx": true
   },
   "rules": {
     "react/jsx-filename-extension": ["error", { "extensions": [".js", ".jsx"] }],
@@ -15,6 +17,7 @@
     "no-underscore-dangle": "off",
     "prefer-promise-reject-errors": "off",
     "no-nested-ternary": "off",
-    "react/no-multi-comp": "off"
-  },
+    "react/no-multi-comp": "off",
+    "react/jsx-no-undef": [2, { "allowGlobals": true }],
+  }
 }

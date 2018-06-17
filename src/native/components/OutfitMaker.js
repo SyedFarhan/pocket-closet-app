@@ -1,8 +1,8 @@
 import React from 'react';
-import { View, Image, TouchableHighlight } from 'react-native';
+import { View } from 'react-native';
 import PropTypes from 'prop-types';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-import { Card, CardItem, Body, Text, Button, DeckSwiper, Left, Thumbnail, Icon } from 'native-base';
+import { Text } from 'native-base';
 import Spacer from './Spacer';
 
 import GarmentDeckSwiper from './GarmentDeckSwiper';
