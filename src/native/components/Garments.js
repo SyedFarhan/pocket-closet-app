@@ -92,6 +92,7 @@ GarmentListing.propTypes = {
   loading: PropTypes.bool.isRequired,
   garments: PropTypes.arrayOf(PropTypes.shape()).isRequired,
   reFetch: PropTypes.func,
+  deleteGarment: PropTypes.func.isRequired,
 };
 
 GarmentListing.defaultProps = {
