@@ -66,7 +66,7 @@ const Index = (
         <Stack
           key="garments"
           title="CLOSET"
-          icon={() => <Icon name="square" {...DefaultProps.icons} />}
+          icon={() => <Icon name="md-pricetags" {...DefaultProps.icons} />}
           {...DefaultProps.navbarProps}
         >
           <Scene key="garments" component={GarmentsContainer} Layout={GarmentsComponent} />

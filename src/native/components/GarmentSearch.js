@@ -1,5 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, TouchableHighlight } from 'react-native';
 import PropTypes from 'prop-types';
 import { Container, Content, Text, H1, Button, Form, Picker, Item, Input, Left, Right, Icon } from 'native-base';
 import { Actions } from 'react-native-router-flux';
@@ -38,7 +38,7 @@ class GarmentSearch extends React.Component {
       );
       button = <ClearButton onClear={this.props.resetForm} />;
     } else {
-      showImage = <View />;
+      showImage = null;
       button = <SearchButton onSearch={this.onGarmentSearch} />;
     }
 
@@ -51,14 +51,6 @@ class GarmentSearch extends React.Component {
           <Text>
             Select a store to search for you clothing items image and details.
           </Text>
-          <Button
-            style={{ width: 150, flex: 1 }}
-            onPress={() => Actions.barcodeScanner()}
-          >
-            <Text>
-                Scan Barcode
-            </Text>
-          </Button>
           <Spacer size={20} />
           <Form>
             <Picker
@@ -82,7 +74,11 @@ class GarmentSearch extends React.Component {
                 <Left>
                   <Item rounded>
                     <Input style={{ flex: 1 }} placeholder="Enter the Barcode #" value={this.props.inputText} onChangeText={e => this.props.onTextChange(e)} />
-                    <Icon name="barcode" />
+                    <TouchableHighlight
+                      onPress={() => Actions.barcodeScanner()}
+                    >
+                      <Icon name="barcode" />
+                    </TouchableHighlight>
                   </Item>
                 </Left>
                 <Right>
