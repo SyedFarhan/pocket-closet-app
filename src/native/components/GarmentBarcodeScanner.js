@@ -1,4 +1,5 @@
 import React from 'react';
+import { Actions } from 'react-native-router-flux';
 import { BarCodeScanner, Permissions } from 'expo';
 import { View, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
@@ -23,9 +24,9 @@ class GarmentBarcodeScanner extends React.Component {
   }
 
   _handleBarCodeRead = ({ type, data }) => {
-    alert(`Bar code with type ${type} and data ${data} has been scanned!`);
+    console.log(`Barcode read - Type: ${type} | Data: ${data}`);
     this.props.onTextChange(data);
-    Actions.search();
+    Actions.pop();
   }
 
   render() {

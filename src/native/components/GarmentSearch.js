@@ -1,7 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
 import PropTypes from 'prop-types';
-import { Container, Content, Text, H1, Form, Picker, Item, Input, Left, Right, Button } from 'native-base';
+import { Container, Content, Text, H1, Button, Form, Picker, Item, Input, Left, Right } from 'native-base';
 import { Actions } from 'react-native-router-flux';
 import Spacer from './Spacer';
 import StyledCard from './StyledCard';
@@ -27,12 +27,24 @@ class GarmentSearch extends React.Component {
   };
 
   render() {
-    const searchCondition = (this.props.inputText !== '' && this.props.pickerSelection !== '' && this.props.searched);
+    let showImage;
+    let button;
+    if (this.props.inputText !== '' && this.props.pickerSelection !== '' && this.props.searched) {
+      showImage = (
+        <StyledCard
+          addGarment={this.props.addGarment}
+          garment={this.props.garment}
+        />
+      );
+      button = <ClearButton onClear={this.props.resetForm} />;
+    } else {
+      showImage = <View />;
+      button = <SearchButton onSearch={this.onGarmentSearch} />;
+    }
 
     return (
       <Container>
         <Content padder>
-
           <Spacer size={30} />
           <H1>Product Search</H1>
           <Spacer size={10} />
@@ -43,16 +55,12 @@ class GarmentSearch extends React.Component {
             style={{ width: 150, flex: 1 }}
             onPress={() => Actions.barcodeScanner()}
           >
-            <View>
-              <Text>
+            <Text>
                 Scan Barcode
-              </Text>
-            </View>
+            </Text>
           </Button>
           <Spacer size={20} />
-
           <Form>
-
             <Picker
               mode="dialog"
               prompt="Select a brand"
@@ -69,7 +77,6 @@ class GarmentSearch extends React.Component {
               <Picker.Item label="Old Navy" value="key3" />
               <Picker.Item label="Macys" value="key4" />
             </Picker>
-
             <View>
               <Item>
                 <Left>
@@ -79,30 +86,14 @@ class GarmentSearch extends React.Component {
                 </Left>
                 <Right>
                   <Item rounded>
-                    <View style={{ flex: 1 }}>
-                      <Choose>
-                        <When condition={searchCondition}>
-                          button = <ClearButton onClear={this.props.resetForm} />;
-                        </When>
-                        <Otherwise>
-                          <SearchButton onSearch={this.onGarmentSearch} />;
-                        </Otherwise>
-                      </Choose>
-                    </View>
+                    {button}
                   </Item>
                 </Right>
               </Item>
             </View>
           </Form>
-
           <Spacer size={10} />
-          <If condition={searchCondition} >
-            <StyledCard
-              addGarment={this.props.addGarment}
-              garment={this.props.garment}
-            />
-          </If>
-
+          {showImage}
         </Content>
       </Container>
     );
