@@ -1,7 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
 import PropTypes from 'prop-types';
-import { Container, Content, Text, H1, Button, Form, Picker, Item, Input, Left, Right } from 'native-base';
+import { Container, Content, Text, H1, Button, Form, Picker, Item, Input, Left, Right, Icon } from 'native-base';
 import { Actions } from 'react-native-router-flux';
 import Spacer from './Spacer';
 import StyledCard from './StyledCard';
@@ -82,6 +82,7 @@ class GarmentSearch extends React.Component {
                 <Left>
                   <Item rounded>
                     <Input style={{ flex: 1 }} placeholder="Enter the Barcode #" value={this.props.inputText} onChangeText={e => this.props.onTextChange(e)} />
+                    <Icon name="barcode" />
                   </Item>
                 </Left>
                 <Right>
