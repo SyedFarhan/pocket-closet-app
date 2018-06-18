@@ -71,17 +71,20 @@ class GarmentSearch extends React.Component {
             </Picker>
             <View>
               <Item>
-                <Left>
+                <Left style={{ flex: 2 }}>
                   <Item rounded>
                     <Input style={{ flex: 1 }} placeholder="Enter the Barcode #" value={this.props.inputText} onChangeText={e => this.props.onTextChange(e)} />
                     <TouchableHighlight
                       onPress={() => Actions.barcodeScanner()}
                     >
-                      <Icon name="barcode" />
+                      <Icon
+                        name="barcode"
+                        style={{ color: 'red' }}
+                      />
                     </TouchableHighlight>
                   </Item>
                 </Left>
-                <Right>
+                <Right style={{ flex: 1 }}>
                   <Item rounded>
                     {button}
                   </Item>
