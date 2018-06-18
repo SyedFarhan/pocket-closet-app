@@ -1,23 +1,12 @@
 import React from 'react';
-import { View, StyleSheet} from 'react-native';
-import PropTypes from 'prop-types';
-import { Container, Content, Text, H1, Button, Form, Picker, Item, Input, Left, Right } from 'native-base';
-import Spacer from './Spacer';
-import StyledCard from './StyledCard';
 import { BarCodeScanner, Permissions } from 'expo';
+import { View, StyleSheet } from 'react-native';
+import PropTypes from 'prop-types';
 
 
 class GarmentBarcodeScanner extends React.Component {
   static propTypes = {
-    addGarment: PropTypes.func.isRequired,
-    garment: PropTypes.shape().isRequired,
-    onValueChange: PropTypes.func.isRequired,
-    pickerSelection: PropTypes.string.isRequired,
     onTextChange: PropTypes.func.isRequired,
-    inputText: PropTypes.string.isRequired,
-    onSearch: PropTypes.func.isRequired,
-    searched: PropTypes.bool.isRequired,
-    resetForm: PropTypes.func.isRequired,
   }
 
   constructor(props) {
@@ -35,50 +24,11 @@ class GarmentBarcodeScanner extends React.Component {
 
   _handleBarCodeRead = ({ type, data }) => {
     alert(`Bar code with type ${type} and data ${data} has been scanned!`);
+    this.props.onTextChange(data);
+    Actions.search();
   }
 
   render() {
-
-    let showImage;
-    let button;
-    if (this.props.inputText !== '' && this.props.pickerSelection !== '' && this.props.searched) {
-      showImage = (
-        <StyledCard
-          addGarment={this.props.addGarment}
-          garment={this.props.garment}
-        />
-      );
-      button = (
-        <Button
-          danger
-          containerStyle={{ flex: 1 }}
-          style={{ flex: 1, width: '100%' }}
-          onPress={() => this.props.resetForm()}
-        >
-          <Text>
-            Clear
-          </Text>
-        </Button>
-      );
-    } else {
-      showImage = <View />;
-      button = (
-        <Button
-          containerStyle={{ flex: 1 }}
-          style={{ flex: 1, width: '100%' }}
-          onPress={() => {
-            if (this.props.pickerSelection && this.props.inputText) {
-              this.props.onSearch(this.props.pickerSelection, this.props.inputText);
-            }
-          }
-          }
-        >
-          <Text>
-            Search
-          </Text>
-        </Button>
-      );
-    }
     return (
       <View style={{ flex: 1 }}>
         <BarCodeScanner

@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { replaceBrand, replaceBarcode, initiateSearch, resetSearchForm } from '../actions/productSearch';
 
 import { addGarment } from '../actions/garments';
+import { Permissions } from 'expo';
 
 
 class GarmentSearch extends Component {
@@ -30,6 +31,12 @@ class GarmentSearch extends Component {
     super(props);
 
     this.props.resetSearchForm();
+  }
+
+  async componentWillMount() {
+    const { status } = await Permissions.askAsync(Permissions.CAMERA);
+    this.setState({ hasCameraPermission: status === 'granted' });
+    console.log('permission: ', this.state.hasCameraPermission);
   }
 
   render = () => {

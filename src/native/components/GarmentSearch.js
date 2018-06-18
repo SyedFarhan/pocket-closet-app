@@ -1,7 +1,8 @@
 import React from 'react';
 import { View } from 'react-native';
 import PropTypes from 'prop-types';
-import { Container, Content, Text, H1, Form, Picker, Item, Input, Left, Right } from 'native-base';
+import { Container, Content, Text, H1, Form, Picker, Item, Input, Left, Right, Button } from 'native-base';
+import { Actions } from 'react-native-router-flux';
 import Spacer from './Spacer';
 import StyledCard from './StyledCard';
 import ClearButton from './ClearButton';
@@ -38,6 +39,16 @@ class GarmentSearch extends React.Component {
           <Text>
             Select a store to search for you clothing items image and details.
           </Text>
+          <Button
+            style={{ width: 150, flex: 1 }}
+            onPress={() => Actions.barcodeScanner()}
+          >
+            <View>
+              <Text>
+                Scan Barcode
+              </Text>
+            </View>
+          </Button>
           <Spacer size={20} />
 
           <Form>
@@ -70,7 +81,7 @@ class GarmentSearch extends React.Component {
                   <Item rounded>
                     <View style={{ flex: 1 }}>
                       <Choose>
-                        <When condition={ searchCondition }>
+                        <When condition={searchCondition}>
                           button = <ClearButton onClear={this.props.resetForm} />;
                         </When>
                         <Otherwise>
@@ -82,7 +93,6 @@ class GarmentSearch extends React.Component {
                 </Right>
               </Item>
             </View>
-
           </Form>
 
           <Spacer size={10} />

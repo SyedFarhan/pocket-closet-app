@@ -32,6 +32,7 @@ import ProfileComponent from '../components/Profile';
 
 import GarmentSearchContainer from '../../containers/GarmentSearch';
 import GarmentSearchComponent from '../components/GarmentSearch';
+import GarmentBarcodeScanner from '../components/GarmentBarcodeScanner';
 
 const Index = (
   <Stack>
@@ -50,6 +51,7 @@ const Index = (
           {...DefaultProps.navbarProps}
         >
           <Scene key="search" component={GarmentSearchContainer} Layout={GarmentSearchComponent} />
+          <Scene key="barcodeScanner" component={GarmentSearchContainer} Layout={GarmentBarcodeScanner} />
         </Stack>
 
         <Stack
