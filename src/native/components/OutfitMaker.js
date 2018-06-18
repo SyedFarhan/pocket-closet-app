@@ -29,20 +29,26 @@ const OutfitMaker = ({
         <KeyboardAwareScrollView>
           <View style={{ height: 250 }}>
             <Text h1 style={{ fontSize: 18, textAlign: 'center' }}>Shirt</Text>
-            {selectedShirt ?
-              <SelectedGarment selection={selectedShirt} />
-              :
-              <GarmentDeckSwiper data={shirts} onCardSelect={onItemSelect} />
-            }
+            <Choose>
+              <When condition={selectedShirt} >
+                <SelectedGarment selection={selectedShirt} />
+              </When>
+              <Otherwise>
+                <GarmentDeckSwiper data={shirts} onCardSelect={onItemSelect} />
+              </Otherwise>
+            </Choose>
           </View>
           <Spacer size={90} />
           <View style={{ height: 250 }} >
             <Text h1 style={{ fontSize: 18, textAlign: 'center' }}>Pants</Text>
-            {selectedPant ?
-              <SelectedGarment selection={selectedPant} />
-              :
-              <GarmentDeckSwiper data={pants} onCardSelect={onItemSelect} />
-            }
+            <Choose>
+              <When condition={selectedPant} >
+                <SelectedGarment selection={selectedPant} />
+              </When>
+              <Otherwise>
+                <GarmentDeckSwiper data={pants} onCardSelect={onItemSelect} />
+              </Otherwise>
+            </Choose>
           </View>
           <Spacer size={50} />
           <View style={{ height: 500 }} />

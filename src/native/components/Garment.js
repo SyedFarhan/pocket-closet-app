@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Image } from 'react-native';
-import { Container, Content, Card, CardItem, Body, H3, List, ListItem, Text } from 'native-base';
+import { Container, Content, Card, CardItem, Body, H3, List, Text } from 'native-base';
 import ErrorMessages from '../../constants/errors';
 import Error from './Error';
 import Spacer from './Spacer';
