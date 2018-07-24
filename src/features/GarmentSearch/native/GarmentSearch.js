@@ -7,6 +7,7 @@ import Spacer from '../../../native/components/Spacer';
 import StyledCard from './StyledCard';
 import ClearButton from './ClearButton';
 import SearchButton from './SearchButton';
+import Header from '../../../native/components/Header';
 
 
 class GarmentSearch extends React.Component {
@@ -45,13 +46,10 @@ class GarmentSearch extends React.Component {
     return (
       <Container>
         <Content padder>
-          <Spacer size={30} />
-          <H1>Product Search</H1>
-          <Spacer size={10} />
-          <Text>
-            Select a store to search for you clothing items image and details.
-          </Text>
-          <Spacer size={20} />
+          <Header
+            title="Product Search"
+            content="Select a store to search for you clothing items image and details."
+          />
           <Form>
             <Picker
               mode="dialog"
