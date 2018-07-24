@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { getShirts, getPants } from '../actions/garments';
+import { getShirts, getPants } from '../../actions/garments';
 
 class OutfitMaker extends Component {
   static propTypes = {

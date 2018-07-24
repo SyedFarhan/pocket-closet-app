@@ -5,8 +5,8 @@ import { Icon } from 'native-base';
 import DefaultProps from '../constants/navigation';
 import AppConfig from '../../constants/config';
 
-import OutfitMakerContainer from '../../OutfitMaker/OutfitMaker';
-import OutfitMakerComponent from '../../OutfitMaker/native/OutfitMaker';
+import OutfitMakerContainer from '../../features/OutfitMaker/OutfitMaker';
+import OutfitMakerComponent from '../../features/OutfitMaker/native/OutfitMaker';
 
 import GarmentsContainer from '../../containers/Garments';
 import GarmentsComponent from '../components/Garments';
@@ -30,8 +30,8 @@ import UpdateProfileComponent from '../components/UpdateProfile';
 import MemberContainer from '../../containers/Member';
 import ProfileComponent from '../components/Profile';
 
-import GarmentSearchContainer from '../../GarmentSearch/GarmentSearch';
-import GarmentSearchComponent from '../../GarmentSearch/native/GarmentSearch';
+import GarmentSearchContainer from '../../features/GarmentSearch/GarmentSearch';
+import GarmentSearchComponent from '../../features/GarmentSearch/native/GarmentSearch';
 import GarmentBarcodeScanner from '../components/GarmentBarcodeScanner';
 
 const Index = (

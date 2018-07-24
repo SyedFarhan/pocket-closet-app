@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { replaceBrand, replaceBarcode, initiateSearch, resetSearchForm } from '../actions/productSearch';
+import { replaceBrand, replaceBarcode, initiateSearch, resetSearchForm } from '../../actions/productSearch';
 
-import { addGarment } from '../actions/garments';
+import { addGarment } from '../../actions/garments';
 import { Permissions } from 'expo';
 
 
