@@ -5,8 +5,8 @@ import { Icon } from 'native-base';
 import DefaultProps from '../constants/navigation';
 import AppConfig from '../../constants/config';
 
-import OutfitMakerContainer from '../../containers/OutfitMaker';
-import OutfitMakerComponent from '../components/OutfitMaker';
+import OutfitMakerContainer from '../../OutfitMaker/OutfitMaker';
+import OutfitMakerComponent from '../../OutfitMaker/native/OutfitMaker';
 
 import GarmentsContainer from '../../containers/Garments';
 import GarmentsComponent from '../components/Garments';

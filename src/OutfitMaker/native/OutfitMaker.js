@@ -3,10 +3,10 @@ import { View } from 'react-native';
 import PropTypes from 'prop-types';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { Text } from 'native-base';
-import Spacer from './Spacer';
+import Spacer from '../../native/components/Spacer';
 
-import GarmentDeckSwiper from './GarmentDeckSwiper';
-import SelectedGarment from './SelectedGarment';
+import GarmentDeckSwiper from '../../native/components/GarmentDeckSwiper';
+import SelectedGarment from '../../native/components/SelectedGarment';
 
 
 const OutfitMaker = ({
