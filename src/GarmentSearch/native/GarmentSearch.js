@@ -3,10 +3,10 @@ import { View, TouchableHighlight } from 'react-native';
 import PropTypes from 'prop-types';
 import { Container, Content, Text, H1, Button, Form, Picker, Item, Input, Left, Right, Icon } from 'native-base';
 import { Actions } from 'react-native-router-flux';
-import Spacer from './Spacer';
-import StyledCard from './StyledCard';
-import ClearButton from './ClearButton';
-import SearchButton from './SearchButton';
+import Spacer from '../../native/components/Spacer';
+import StyledCard from '../../native/components/StyledCard';
+import ClearButton from '../../native/components/ClearButton';
+import SearchButton from '../../native/components/SearchButton';
 
 
 class GarmentSearch extends React.Component {

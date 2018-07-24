@@ -30,8 +30,8 @@ import UpdateProfileComponent from '../components/UpdateProfile';
 import MemberContainer from '../../containers/Member';
 import ProfileComponent from '../components/Profile';
 
-import GarmentSearchContainer from '../../containers/GarmentSearch';
-import GarmentSearchComponent from '../components/GarmentSearch';
+import GarmentSearchContainer from '../../GarmentSearch/GarmentSearch';
+import GarmentSearchComponent from '../../GarmentSearch/native/GarmentSearch';
 import GarmentBarcodeScanner from '../components/GarmentBarcodeScanner';
 
 const Index = (
