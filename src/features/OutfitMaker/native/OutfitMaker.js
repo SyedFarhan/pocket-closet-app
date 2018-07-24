@@ -5,8 +5,8 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 import { Text } from 'native-base';
 import Spacer from '../../../native/components/Spacer';
 
-import GarmentDeckSwiper from '../../../native/components/GarmentDeckSwiper';
-import SelectedGarment from '../../../native/components/SelectedGarment';
+import GarmentDeckSwiper from './GarmentDeckSwiper';
+import SelectedGarment from './SelectedGarment';
 
 
 const OutfitMaker = ({

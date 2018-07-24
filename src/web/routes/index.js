@@ -8,9 +8,9 @@ import TemplateSidebar from '../components/TemplateSidebar';
 // Routes
 import Home from '../components/Home';
 
-import GarmentsContainer from '../../containers/Garments';
-import GarmentsComponent from '../components/Garments';
-import GarmentViewComponent from '../components/Garment';
+import GarmentsContainer from '../../features/Closet/Garments';
+import GarmentsComponent from '../../features/Closet/web/Garments';
+import GarmentViewComponent from '../../features/Closet/web/Garment';
 
 import SignUpContainer from '../../containers/SignUp';
 import SignUpComponent from '../components/SignUp';

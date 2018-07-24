@@ -8,9 +8,9 @@ import AppConfig from '../../constants/config';
 import OutfitMakerContainer from '../../features/OutfitMaker/OutfitMaker';
 import OutfitMakerComponent from '../../features/OutfitMaker/native/OutfitMaker';
 
-import GarmentsContainer from '../../containers/Garments';
-import GarmentsComponent from '../components/Garments';
-import GarmentViewComponent from '../components/Garment';
+import GarmentsContainer from '../../features/Closet/Garments';
+import GarmentsComponent from '../../features/Closet/native/Garments';
+import GarmentViewComponent from '../../features/Closet/native/Garment';
 
 import SignUpContainer from '../../containers/SignUp';
 import SignUpComponent from '../components/SignUp';
@@ -32,7 +32,7 @@ import ProfileComponent from '../components/Profile';
 
 import GarmentSearchContainer from '../../features/GarmentSearch/GarmentSearch';
 import GarmentSearchComponent from '../../features/GarmentSearch/native/GarmentSearch';
-import GarmentBarcodeScanner from '../components/GarmentBarcodeScanner';
+import GarmentBarcodeScanner from '../../features/GarmentSearch/native/GarmentBarcodeScanner';
 
 const Index = (
   <Stack>

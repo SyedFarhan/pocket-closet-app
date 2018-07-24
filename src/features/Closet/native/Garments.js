@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import { FlatList, TouchableOpacity, RefreshControl, Image } from 'react-native';
 import { Container, Content, Card, CardItem, Body, Text, Button } from 'native-base';
 import { Actions } from 'react-native-router-flux';
-import Loading from './Loading';
-import Error from './Error';
-import Header from './Header';
-import Spacer from './Spacer';
+import Loading from '../../../native/components/Loading';
+import Error from '../../../native/components/Error';
+import Header from '../../../native/components/Header';
+import Spacer from '../../../native/components/Spacer';
 
 
 const GarmentListing = ({

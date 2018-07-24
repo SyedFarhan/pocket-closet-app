@@ -11,7 +11,7 @@ import {
   Button,
 } from 'reactstrap';
 import { Link } from 'react-router-dom';
-import Error from './Error';
+import Error from '../../../web/components/Error';
 
 const GarmentListing = ({ error, loading, garments, deleteGarment }) => {
   // Error

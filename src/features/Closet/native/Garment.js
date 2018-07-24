@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Image } from 'react-native';
 import { Container, Content, Card, CardItem, Body, H3, List, Text } from 'native-base';
-import ErrorMessages from '../../constants/errors';
-import Error from './Error';
-import Spacer from './Spacer';
+import ErrorMessages from '../../../constants/errors';
+import Error from '../../../native/components/Error';
+import Spacer from '../../../native/components/Spacer';
 
 const GarmentView = ({
   error,

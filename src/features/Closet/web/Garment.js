@@ -11,9 +11,9 @@ import {
   ListGroupItem,
 } from 'reactstrap';
 import { Link } from 'react-router-dom';
-import ErrorMessages from '../../constants/errors';
-import Loading from './Loading';
-import Error from './Error';
+import ErrorMessages from '../../../constants/errors';
+import Loading from '../../../web/components/Loading';
+import Error from '../../../web/components/Error';
 
 const GarmentView = ({
   error,
