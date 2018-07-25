@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import GarmentSearchResultCard from './GarmentSearchResultCard'
+import GarmentSearchResultCard from './GarmentSearchResultCard';
 
 const SearchResult = ({ isDisplayed, searchResult, onAdd }) => {
   return (
@@ -9,13 +9,12 @@ const SearchResult = ({ isDisplayed, searchResult, onAdd }) => {
 };
 
 SearchResult.defaultProps = {
-  isDisplayed: false,
   searchResult: null,
   onAdd: null,
 };
 
 SearchResult.propTypes = {
-  isDisplayed: PropTypes.bool,
+  isDisplayed: PropTypes.bool.isRequired,
   searchResult: PropTypes.shape({
     title: PropTypes.string,
     brand: PropTypes.string,

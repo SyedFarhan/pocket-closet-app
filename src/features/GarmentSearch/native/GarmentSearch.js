@@ -9,6 +9,8 @@ import ClearButton from './ClearButton';
 import SearchButton from './SearchButton';
 import Header from '../../../native/components/Header';
 
+import SearchResult from './SearchResult';
+import DynamicButton from './DynamicButton';
 
 class GarmentSearch extends React.Component {
   static propTypes = {
@@ -29,21 +31,6 @@ class GarmentSearch extends React.Component {
 
   render() {
     const searchFieldsCompletedAndSearchIsPressed = (this.props.inputText !== '' && this.props.pickerSelection !== '' && this.props.searched);
-    let searchResultContent;
-    let button;
-    if (searchFieldsCompletedAndSearchIsPressed) {
-      searchResultContent = (
-        <GarmentSearchResultCard
-          addGarment={this.props.addGarment}
-          garment={this.props.garment}
-        />
-      );
-      button = <ClearButton onClear={this.props.resetForm} />;
-    } else {
-      showImage = null;
-      button = <SearchButton onSearch={this.onGarmentSearch} />;
-    }
-
     return (
       <Container>
         <Content padder>
@@ -85,14 +72,22 @@ class GarmentSearch extends React.Component {
                 </Left>
                 <Right style={{ flex: 1 }}>
                   <Item rounded>
-                    {button}
+                    <DynamicButton
+                      isSearched={searchFieldsCompletedAndSearchIsPressed}
+                      onSearch={this.onGarmentSearch}
+                      onClear={this.props.resetForm}
+                    />
                   </Item>
                 </Right>
               </Item>
             </View>
           </Form>
           <Spacer size={10} />
-          {searchResultContent}
+          <SearchResult
+            isDisplayed={searchFieldsCompletedAndSearchIsPressed}
+            searchResult={this.props.garment}
+            onAdd={this.props.addGarment}
+          />
         </Content>
       </Container>
     );
