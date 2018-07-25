@@ -43,8 +43,10 @@
     "debug": "open 'rndebugger://set-debugger-loc?host=localhost&port=19001'"
   },
   "jest": {
-    "preset": "jest-expo"
+    "preset": "jest-expo",
+    "transformIgnorePatterns": ["node_modules/(?!(jest-)?expo|react-native|native-base|vector-icons|@expo|react-native-easy-grid)"]
   },
+
   "dependencies": {
     "@expo/vector-icons": "^6.3.1",
     "babel": "^6.23.0",

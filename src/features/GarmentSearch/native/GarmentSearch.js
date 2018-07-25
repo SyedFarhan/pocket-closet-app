@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { Container, Content, Text, H1, Form, Picker, Item, Input, Left, Right, Icon } from 'native-base';
 import { Actions } from 'react-native-router-flux';
 import Spacer from '../../../native/components/Spacer';
-import StyledCard from './StyledCard';
+import GarmentSearchResultCard from './GarmentSearchResultCard';
 import ClearButton from './ClearButton';
 import SearchButton from './SearchButton';
 import Header from '../../../native/components/Header';
@@ -29,11 +29,11 @@ class GarmentSearch extends React.Component {
 
   render() {
     const searchFieldsCompletedAndSearchIsPressed = (this.props.inputText !== '' && this.props.pickerSelection !== '' && this.props.searched);
-    let showImage;
+    let searchResultContent;
     let button;
     if (searchFieldsCompletedAndSearchIsPressed) {
-      showImage = (
-        <StyledCard
+      searchResultContent = (
+        <GarmentSearchResultCard
           addGarment={this.props.addGarment}
           garment={this.props.garment}
         />
@@ -92,7 +92,7 @@ class GarmentSearch extends React.Component {
             </View>
           </Form>
           <Spacer size={10} />
-          {showImage}
+          {searchResultContent}
         </Content>
       </Container>
     );

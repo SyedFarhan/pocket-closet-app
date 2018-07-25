@@ -1,13 +1,13 @@
 import React from 'react';
 import { Image, View } from 'react-native';
+import PropTypes from 'prop-types';
 import { Text, Button, Card, CardItem, Left, Right, Body, Icon } from 'native-base';
 
 
 // Todo: Refactor to decouple from GarmentSearch and make it a more generic reusable component,
 // Todo: Add proptypes/default
 
-const StyledCard = ({ garment, addGarment }) => {
-  console.log(garment.body);
+const GarmentSearchResultCard = ({ garment, addGarment }) => {
   return (
       <Card>
         <CardItem>
@@ -48,6 +48,11 @@ const StyledCard = ({ garment, addGarment }) => {
   );
 };
 
+
+GarmentSearchResultCard.propTypes = {
+  garment: PropTypes.shape({ title: '', brand: '', imageUrl: '' }).isRequired,
+  addGarment: PropTypes.func.isRequired,
+};
 /*
 StyledCard.propTypes = {
 };
@@ -57,4 +62,4 @@ StyledCard.defaultProps = {
 };
 */
 
-export default StyledCard;
+export default GarmentSearchResultCard;
