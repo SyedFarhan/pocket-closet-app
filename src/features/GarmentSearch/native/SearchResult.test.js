@@ -7,13 +7,13 @@ import SearchResult from './SearchResult';
 test('renders not null when displayResult is true and searchResult exists', () => {
   const searchResult = { title: 'Test', brand: 'test', imageUrl: 'test' };
   const renderedComponent = renderer
-    .create(<SearchResult displayResult searchResult={searchResult} onAdd={() => {}} />)
+    .create(<SearchResult isDisplayed searchResult={searchResult} onAdd={() => {}} />)
     .toJSON();
 
   expect(renderedComponent).toBeTruthy();
 });
 
 test('returns null when displayResult prop is false', () => {
-  const renderedComponent = renderer.create(<SearchResult displayResult={false} />).toJSON();
+  const renderedComponent = renderer.create(<SearchResult isDisplayed={false} />).toJSON();
   expect(renderedComponent).toBeNull();
 });

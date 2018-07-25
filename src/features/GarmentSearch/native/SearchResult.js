@@ -2,20 +2,20 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import GarmentSearchResultCard from './GarmentSearchResultCard'
 
-const SearchResult = ({ displayResult, searchResult, onAdd }) => {
+const SearchResult = ({ isDisplayed, searchResult, onAdd }) => {
   return (
-    displayResult ? <GarmentSearchResultCard garment={searchResult} addGarment={onAdd} /> : null
+    isDisplayed ? <GarmentSearchResultCard garment={searchResult} addGarment={onAdd} /> : null
   );
 };
 
 SearchResult.defaultProps = {
-  displayResult: false,
+  isDisplayed: false,
   searchResult: null,
   onAdd: null,
 };
 
 SearchResult.propTypes = {
-  displayResult: PropTypes.bool,
+  isDisplayed: PropTypes.bool,
   searchResult: PropTypes.shape({
     title: PropTypes.string,
     brand: PropTypes.string,
