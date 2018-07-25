@@ -28,9 +28,10 @@ class GarmentSearch extends React.Component {
   };
 
   render() {
+    const searchFieldsCompletedAndSearchIsPressed = (this.props.inputText !== '' && this.props.pickerSelection !== '' && this.props.searched);
     let showImage;
     let button;
-    if (this.props.inputText !== '' && this.props.pickerSelection !== '' && this.props.searched) {
+    if (searchFieldsCompletedAndSearchIsPressed) {
       showImage = (
         <StyledCard
           addGarment={this.props.addGarment}
