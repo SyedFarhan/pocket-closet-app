@@ -44,7 +44,7 @@
   },
   "jest": {
     "preset": "jest-expo",
-    "transformIgnorePatterns": ["node_modules/(?!(jest-)?expo|react-native|native-base|vector-icons|@expo|react-native-easy-grid)"]
+    "transformIgnorePatterns": ["node_modules/(?!(jest-)?expo|react-native|native-base|vector-icons|@expo|react-native-easy-grid|react-native-router-flux|react-navigation)"]
   },
 
   "dependencies": {
