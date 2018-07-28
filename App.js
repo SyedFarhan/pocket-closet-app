@@ -4,6 +4,10 @@ import configureStore from './src/store/index';
 
 const { persistor, store } = configureStore();
 
-export default function App() {
+function App() {
   return <Root store={store} persistor={persistor} />;
 }
+
+import StorybookUIHMRRoot from './storybook';
+
+module.exports = (process.env.REACT_NATIVE_ENVIORMENT == 'storybook') ? StorybookUIHMRRoot : App;

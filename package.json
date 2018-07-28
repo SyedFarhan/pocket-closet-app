@@ -32,6 +32,8 @@
   },
   "main": "./node_modules/react-native-scripts/build/bin/crna-entry.js",
   "scripts": {
+    "storybook": "storybook start -p 7007",
+    "start-native-storybook": "REACT_NATIVE_ENVIORMENT=storybook react-native-scripts start",
     "start": "react-native-scripts start",
     "eject": "react-native-scripts eject",
     "android": "react-native-scripts android",
@@ -44,11 +46,16 @@
   },
   "jest": {
     "preset": "jest-expo",
-    "transformIgnorePatterns": ["node_modules/(?!(jest-)?expo|react-native|native-base|vector-icons|@expo|react-native-easy-grid|react-native-router-flux|react-navigation)"]
+    "transformIgnorePatterns": [
+      "node_modules/(?!(jest-)?expo|react-native|native-base|vector-icons|@expo|react-native-easy-grid|react-native-router-flux|react-navigation)"
+    ]
   },
-
   "dependencies": {
     "@expo/vector-icons": "^6.3.1",
+    "@storybook/addon-actions": "^3.4.8",
+    "@storybook/addon-links": "^3.4.8",
+    "@storybook/addons": "^3.4.8",
+    "@storybook/react-native": "^3.4.8",
     "babel": "^6.23.0",
     "babel-eslint": "^8.2.3",
     "babel-polyfill": "^6.26.0",
