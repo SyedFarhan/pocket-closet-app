@@ -6,7 +6,7 @@ import DynamicButton from './DynamicButton';
 import ClearButton from './ClearButton';
 import SearchButton from './SearchButton';
 
-describe('DynamicButton', () => {
+export default buttonSpec = describe('DynamicButton', () => {
   let props;
   let mountedDynamicButton;
   const mountDynamicButtonWithProps = () => {
@@ -49,18 +49,5 @@ describe('DynamicButton', () => {
     const clearButton = mountedDynamicButton.root.findByType(ClearButton);
 
     expect(clearButton).toBeTruthy();
-  });
-
-  // Snapshots
-  test('Snapshot: renders SearchButton when isSearched prop is false', () => {
-    const componentTree = renderer
-      .create(<DynamicButton isSearched={false} onSearch={() => {}} />)
-      .toJSON();
-    expect(componentTree).toMatchSnapshot();
-  });
-
-  test('Snapshot: renders ClearButton when isSearched prop is true', () => {
-    const componentTree = renderer.create(<DynamicButton isSearched onClear={() => {}} />).toJSON();
-    expect(componentTree).toMatchSnapshot();
   });
 });
