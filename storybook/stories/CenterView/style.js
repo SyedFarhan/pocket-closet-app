@@ -5,4 +5,8 @@ export default {
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
   },
+  second: {
+    flex: 0.25,
+    flexDirection: 'row',
+  },
 };
