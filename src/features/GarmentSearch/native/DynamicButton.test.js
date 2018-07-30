@@ -6,7 +6,7 @@ import DynamicButton from './DynamicButton';
 import ClearButton from './ClearButton';
 import SearchButton from './SearchButton';
 
-export default buttonSpec = describe('DynamicButton', () => {
+export const defaultDynamicButtonSpecs = describe('default', () => {
   let props;
   let mountedDynamicButton;
   const mountDynamicButtonWithProps = () => {
@@ -39,6 +39,33 @@ export default buttonSpec = describe('DynamicButton', () => {
 
     const searchButton = mountedDynamicButton.root.findByType(SearchButton);
     expect(searchButton).toBeTruthy();
+  });
+});
+
+export const searchedDynamicButtonSpecs = describe('after search', () => {
+  let props;
+  let mountedDynamicButton;
+  const mountDynamicButtonWithProps = () => {
+    mountedDynamicButton = mountedDynamicButton
+      ? mountedDynamicButton
+      : renderer.create(<DynamicButton {...props} />);
+    return mountedDynamicButton;
+  };
+
+  const emptyFunction = () => {};
+
+  const clearComponentAndProps = () => {
+    props = {
+      isSearched: undefined,
+      onClear: undefined,
+      onSearch: undefined,
+    };
+    mountedDynamicButton = undefined;
+  };
+
+
+  beforeEach(() => {
+    clearComponentAndProps();
   });
 
   test('renders `ClearButton` when isSearched prop is true', () => {
