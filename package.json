@@ -14,6 +14,8 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "css-loader": "^0.28.11",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
     "gulp": "^3.9.1",
     "jest-expo": "^26.0.0",
     "json-loader": "^0.5.7",
@@ -49,10 +51,7 @@
   "jest": {
     "preset": "jest-expo",
     "transformIgnorePatterns": [
-      "node_modules/(?!(jest-)?expo|react-native|native-base|vector-icons|@expo|react-native-easy-grid|react-native-router-flux|react-navigation|@storybook/react-native|@storybook/addons-storyshots)"
-    ],
-    "snapshotSerializers": [
-      "./node_modules/jest-serializer-enzyme"
+      "node_modules/(?!(jest-)?expo|react-native|native-base|vector-icons|@expo|react-native-easy-grid|react-native-router-flux|react-navigation|@storybook/react-native|@storybook/addons-storyshots|storybook-addon-specifications|enzyme)"
     ]
   },
   "dependencies": {

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { storiesOf } from '@storybook/react-native';
-import { specs } from 'storybook-addon-specifications'
+import { specs } from 'storybook-addon-specifications';
 
 // import { action } from '@storybook/addon-actions';
 // import { linkTo } from '@storybook/addon-links';

@@ -2,16 +2,7 @@ import React, { Component } from 'react';
 import { AppRegistry } from 'react-native';
 import { getStorybookUI, configure } from '@storybook/react-native';
 // imports to allow spec imports in stories
-import { describe, it, beforeEach } from 'storybook-addon-specifications';
-import expect from 'expect';
-
-window.describe = describe;
-window.beforeEach = beforeEach;
-window.it = it;
-window.test = it;
-window.expect = expect;
-
-
+import './spec-config';
 // import stories
 configure(() => {
   require('./stories');
