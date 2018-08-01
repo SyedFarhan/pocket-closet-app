@@ -1,5 +1,6 @@
 /* global test */
 import React from 'react';
+import '../../../../jest-setup';
 import 'react-dom';
 import 'react-native-mock-render/mock';
 import renderer from 'react-test-renderer';
@@ -8,38 +9,8 @@ import DynamicButton from './DynamicButton';
 import ClearButton from './ClearButton';
 import SearchButton from './SearchButton';
 import { Button } from 'native-base';
-import { configure, shallow, mount } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
-const { JSDOM } = require('jsdom');
+import { shallow, mount } from 'enzyme';
 
-configure({ adapter: new Adapter() });
-
-global.console = {
-  ...console,
-  debug: jest.fn(),
-  warn: jest.fn(),
-  error: jest.fn(),
-};
-
-const jsdom = new JSDOM('<!doctype html><html><body></body></html>');
-const { window } = jsdom;
-
-function copyProps(src, target) {
-  const props = Object.getOwnPropertyNames(src)
-    .filter(prop => typeof target[prop] === 'undefined')
-    .reduce((result, prop) => ({
-      ...result,
-      [prop]: Object.getOwnPropertyDescriptor(src, prop),
-    }), {});
-  Object.defineProperties(target, props);
-}
-
-global.window = window;
-global.document = window.document;
-global.navigator = {
-  userAgent: 'node.js',
-};
-copyProps(window, global);
 export const defaultDynamicButtonSpecs = describe('default', () => {
 
   test('renders `SearchButton` when isSearched prop is false', () => {
@@ -50,7 +21,6 @@ export const defaultDynamicButtonSpecs = describe('default', () => {
   });
 
   test('calls onSearch prop when SearchButton is pressed', () => {
-    console.log("yoooooooo")
     let mock = () => console.log('test');
     mock = jest.fn();
     const mountedComponent = mount(<DynamicButton isSearched={false} onSearch={mock} />);

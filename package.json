@@ -49,6 +49,7 @@
     "debug": "open 'rndebugger://set-debugger-loc?host=localhost&port=19001'"
   },
   "jest": {
+    "setupTestFrameworkScriptFile": "./jest-setup.js",
     "preset": "jest-expo",
     "transformIgnorePatterns": [
       "node_modules/(?!(jest-)?expo|react-native|native-base|vector-icons|@expo|react-native-easy-grid|react-native-router-flux|react-navigation|@storybook/react-native|@storybook/addons-storyshots|storybook-addon-specifications|enzyme|react-native-mock-render|enzyme-adapter-react-16|jsdom)"
