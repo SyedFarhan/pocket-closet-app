@@ -1,6 +1,5 @@
-/* global test */
+/* global jest, it, expect, describe */
 import React from 'react';
-import '../../../../jest-setup';
 import 'react-dom';
 import 'react-native-mock-render/mock';
 import renderer from 'react-test-renderer';
@@ -8,60 +7,44 @@ import renderer from 'react-test-renderer';
 import DynamicButton from './DynamicButton';
 import ClearButton from './ClearButton';
 import SearchButton from './SearchButton';
-import { Button } from 'native-base';
-import { shallow, mount } from 'enzyme';
 
-export const defaultDynamicButtonSpecs = describe('default', () => {
-
-  test('renders `SearchButton` when isSearched prop is false', () => {
+export const defaultDynamicButtonSpecs = describe('DynamicButton default', () => {
+  it('renders `SearchButton` when isSearched prop is false', () => {
     const renderedComponent = renderer
       .create(<DynamicButton isSearched={false} onSearch={() => {}} />);
     const searchButton = renderedComponent.root.findByType(SearchButton);
     expect(searchButton).toBeTruthy();
   });
 
-  test('calls onSearch prop when SearchButton is pressed', () => {
-    let mock = () => console.log('test');
-    mock = jest.fn();
-    const mountedComponent = mount(<DynamicButton isSearched={false} onSearch={mock} />);
-    mountedComponent.find(Button).simulate('click');
-    expect(1).toBe(1);
-  })
+  it('calls onSearch prop when SearchButton is pressed', () => {
+    const onSearchMock = jest.fn();
+    const renderedComponent = renderer
+      .create(<DynamicButton isSearched={false} onSearch={onSearchMock} />);
+    const searchButton = renderedComponent.root.findByType(SearchButton);
+    searchButton.props.onSearch();
+    expect(onSearchMock.mock.calls.length).toBe(1);
+  });
 });
 
-// export const searchedDynamicButtonSpecs = describe('after search', () => {
-//   let props;
-//   let mountedDynamicButton;
-//   const mountDynamicButtonWithProps = () => {
-//     mountedDynamicButton = mountedDynamicButton
-//       ? mountedDynamicButton
-//       : renderer.create(<DynamicButton {...props} />);
-//     return mountedDynamicButton;
-//   };
-//
-//   const emptyFunction = () => {};
-//
-//   const clearComponentAndProps = () => {
-//     props = {
-//       isSearched: undefined,
-//       onClear: undefined,
-//       onSearch: undefined,
-//     };
-//     mountedDynamicButton = undefined;
-//   };
-//
-//
-//   beforeEach(() => {
-//     clearComponentAndProps();
-//   });
-//
-//   test('renders `ClearButton` when isSearched prop is true', () => {
-//     props.isSearched = true;
-//     props.onClear = emptyFunction;
-//     mountDynamicButtonWithProps();
-//
-//     const clearButton = mountedDynamicButton.root.findByType(ClearButton);
-//
-//     expect(clearButton).toBeTruthy();
-//   });
-// });
+
+export const searchedDynamicButtonSpecs = describe('Dynamic Button after search', () => {
+  it('renders `ClearButton` when isSearched prop is true', () => {
+    const onClearMock = () => {};
+    const renderedDynamicButton = renderer
+      .create(<DynamicButton isSearched onClear={onClearMock} />);
+    const clearButton = renderedDynamicButton.root.findByType(ClearButton);
+
+    expect(clearButton).toBeTruthy();
+  });
+
+  it('calls "onClear" prop on press', () => {
+    const onClearMock = jest.fn();
+    const renderedDynamicButton = renderer
+      .create(<DynamicButton isSearched onClear={onClearMock} />);
+    const clearButton = renderedDynamicButton.root.findByType(ClearButton);
+
+    clearButton.props.onClear();
+
+    expect(onClearMock.mock.calls.length).toBe(1);
+  });
+});
