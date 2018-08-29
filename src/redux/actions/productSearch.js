@@ -1,4 +1,4 @@
-import { Firebase } from '../lib/firebase'
+import { Firebase } from '../../misc/lib/firebase'
 
 
 export function resetSearchForm() {

@@ -4,7 +4,7 @@ import { Container, Content, Form, Item, Label, Input, Text, Button, View } from
 import { Actions } from 'react-native-router-flux';
 import Loading from './Loading';
 import Messages from './Messages';
-import { translate } from '../../i18n';
+import { translate } from '../../misc/i18n';
 import Header from './Header';
 import Spacer from './Spacer';
 

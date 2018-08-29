@@ -1,6 +1,6 @@
 import statusMessage from './status';
-import { Translations, DEFAULT_LOCALE } from '../i18n';
-import ErrorMessages from '../constants/errors';
+import { Translations, DEFAULT_LOCALE } from '../../misc/i18n/index';
+import ErrorMessages from '../../misc/constants/errors';
 
 export default function changeLocale(locale = DEFAULT_LOCALE) {
   return dispatch => new Promise(async (resolve, reject) => {

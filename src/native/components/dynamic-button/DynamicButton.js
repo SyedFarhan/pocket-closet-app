@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import SearchButton from './SearchButton';
-import ClearButton from './ClearButton';
+import SearchButton from '../search-button/SearchButton';
+import ClearButton from '../clear-button/ClearButton';
 
 const DynamicButton = ({ isSearched, onSearch, onClear }) => {
   return (

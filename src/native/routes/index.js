@@ -3,7 +3,7 @@ import { Scene, Tabs, Stack } from 'react-native-router-flux';
 import { Icon } from 'native-base';
 
 import DefaultProps from '../constants/navigation';
-import AppConfig from '../../constants/config';
+import AppConfig from '../../misc/constants/config';
 
 import OutfitMakerContainer from '../../features/OutfitMaker/OutfitMaker';
 import OutfitMakerComponent from '../../features/OutfitMaker/native/OutfitMaker';

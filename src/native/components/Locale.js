@@ -6,7 +6,7 @@ import Loading from './Loading';
 import Messages from './Messages';
 import Header from './Header';
 
-import { Translations } from '../../i18n';
+import { Translations } from '../../misc/i18n';
 
 class Locale extends React.Component {
   static propTypes = {

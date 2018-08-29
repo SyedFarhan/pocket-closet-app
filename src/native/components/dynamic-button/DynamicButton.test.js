@@ -3,8 +3,8 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 
 import DynamicButton from './DynamicButton';
-import ClearButton from './ClearButton';
-import SearchButton from './SearchButton';
+import ClearButton from '../clear-button/ClearButton';
+import SearchButton from '../search-button/SearchButton';
 
 export const defaultDynamicButtonSpecs = describe('default', () => {
   let props;

@@ -3,7 +3,7 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import { persistStore, persistCombineReducers } from 'redux-persist';
 import storage from 'redux-persist/es/storage'; // default: localStorage if web, AsyncStorage if react-native
 import thunk from 'redux-thunk';
-import reducers from '../reducers';
+import reducers from '../reducers/index';
 
 // Redux Persist config
 const config = {

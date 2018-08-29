@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import { signUp } from '../actions/member';
+import { signUp } from '../redux/actions/member';
 
 const SignUp = ({
   Layout,

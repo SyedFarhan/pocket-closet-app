@@ -11,7 +11,7 @@ import {
   ListGroupItem,
 } from 'reactstrap';
 import { Link } from 'react-router-dom';
-import ErrorMessages from '../../../constants/errors';
+import ErrorMessages from '../../../misc/constants/errors';
 import Loading from '../../../web/components/Loading';
 import Error from '../../../web/components/Error';
 

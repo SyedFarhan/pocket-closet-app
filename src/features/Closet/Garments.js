@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { deleteGarment, getGarments, getMeals, setError } from '../../actions/garments';
+import { deleteGarment, getGarments, getMeals, setError } from '../../redux/actions/garments';
 
 class GarmentListing extends Component {
   static propTypes = {

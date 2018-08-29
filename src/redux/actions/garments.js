@@ -1,4 +1,4 @@
-import { Firebase, FirebaseRef } from '../lib/firebase';
+import { Firebase, FirebaseRef } from '../../misc/lib/firebase';
 
 /**
   * Get this User's Favourite Recipes
