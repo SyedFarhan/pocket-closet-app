@@ -31,6 +31,15 @@ class GarmentSearch extends React.Component {
     && this.props.searched
   )
 
+  renderSearchForm = () => (
+    <Form>
+      {this.renderPicker()}
+      <View>
+        {this.renderSearchBar()}
+      </View>
+    </Form>
+  )
+
   renderHeader = () => (
     <Header
       title="Product Search"
@@ -71,27 +80,35 @@ class GarmentSearch extends React.Component {
   renderSearchBar = () => (
     <Item>
       <Left style={{ flex: 2 }}>
-        <Item rounded>
-          <Input style={{ flex: 1 }} placeholder="Enter the Barcode #" value={this.props.inputText} onChangeText={e => this.props.onTextChange(e)} />
-          <TouchableHighlight
-            onPress={() => Actions.barcodeScanner()}
-          >
-            <Icon
-              name="barcode"
-              style={{ color: 'red' }}
-            />
-          </TouchableHighlight>
-        </Item>
+        {this.renderSearchInput()}
       </Left>
       <Right style={{ flex: 1 }}>
-        <Item rounded>
-          <DynamicButton
-            isSearched={this.isValidSearch()}
-            onSearch={this.onGarmentSearch}
-            onClear={this.props.resetForm}
-          />
-        </Item>
+        {this.renderSearchButton()}
       </Right>
+    </Item>
+  )
+
+  renderSearchInput = () => (
+    <Item rounded>
+      <Input style={{ flex: 1 }} placeholder="Enter the Barcode #" value={this.props.inputText} onChangeText={e => this.props.onTextChange(e)} />
+      <TouchableHighlight
+        onPress={() => Actions.barcodeScanner()}
+      >
+        <Icon
+          name="barcode"
+          style={{ color: 'red' }}
+        />
+      </TouchableHighlight>
+    </Item>
+  )
+
+  renderSearchButton = () => (
+    <Item rounded>
+      <DynamicButton
+        isSearched={this.isValidSearch()}
+        onSearch={this.onGarmentSearch}
+        onClear={this.props.resetForm}
+      />
     </Item>
   )
 
@@ -100,12 +117,7 @@ class GarmentSearch extends React.Component {
       <Container>
         <Content padder>
           {this.renderHeader()}
-          <Form>
-            {this.renderPicker()}
-            <View>
-              {this.renderSearchBar()}
-            </View>
-          </Form>
+          {this.renderSearchForm()}
           {this.renderSearchResult()}
         </Content>
       </Container>
